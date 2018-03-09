@@ -1,0 +1,121 @@
+
+.row-margin{
+    margin-left: 0;
+    margin-right: 0;
+}
+/*  start bedding palyer Information */
+ 
+.bidding{
+    width: 100%;
+    border: 1px solid;
+}
+ #center{
+    border: 1px solid;
+     
+ }
+.formCard {
+    width: 100%;
+    height: 100%;   
+    background: url(/assets/images/playerbg_3.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+   
+}
+.selectbtn{
+    background: url(/assets/images/playerbg_2.png) no-repeat;   
+    background-size: cover;
+}
+.player-img img{
+    width:34%;
+}
+.details{
+    color:black;
+    padding-bottom: 12px;
+}
+.col-top-bottom {
+    margin: 20px 0px 20px 0;
+}
+
+.playerInfo {
+    padding: 0.8em;
+}
+
+.playerInfo img {
+    margin: 9px 6px 0px;    
+    border: 2px solid black;
+    border-radius: 40px 1px 40px 0px;
+}
+.career{
+    border: 1px solid;
+    margin-left: 0;
+    margin-right: 0;
+}
+.career .col-sm-6 {
+    font-weight: 400;
+    font-size: 1.1em;
+     
+}
+ 
+
+.selectbtn .usold {
+    bottom: 0px;
+    left: 4px;
+    /* position: absolute; */
+    border-radius: 0px 8px 8px 0px;
+    /* float: left; */
+    width: 40%;
+    height: 1.9em;
+    color: black;
+    font-size: 25px;
+}
+ 
+.selectbtn .nextPlayer {
+    border-radius: 8px 0px 0px 8px;
+     float: right;
+    width: 40%;
+    height: 1.9em;    
+    color: black;
+    font-size: 25px;
+}
+.selectbtn .nextPlayer{
+    box-shadow:-9px 5px 13px 3px  rgba(0, 0, 0, 0.35)
+} 
+.selectbtn .nextPlayer:hover{
+    background-color: #6c757d75;
+}
+.selectbtn .nextPlayer:active{
+    box-shadow:-9px 5px 13px 3px  rgba(0, 0, 0, 0.09);
+    background-color:#ffffff00
+}.selectbtn .usold{
+    box-shadow:9px 5px 13px 3px  rgba(0, 0, 0, 0.35)
+} 
+.selectbtn .usold:hover{
+    background-color: #6c757d75;
+}
+.selectbtn .usold:active{
+    box-shadow:9px 5px 13px 3px  rgba(0, 0, 0, 0.09);
+    background-color:#ffffff00
+}
+@media only screen and (min-width:769px) and (max-width:1125px){
+    .selectbtn .nextPlayer{    height: 5.2em;    font-size: 16px;}
+    .selectbtn .usold{    height: 5.2em;    font-size: 16px;}
+}
+/*  End bedding palyer Information */
+
+/* +++++++++==================================++++++++++++++++++ */
+
+
+.bidding-form{
+    color:black;
+    padding: 5px;
+}
+
+ .sold {
+    bottom: 0px;   
+    border-radius: 8px 0px 0px 8px;
+    width: 40%;
+    height: 2.3em;    
+    color: black;
+    font-size: 25px;
+}

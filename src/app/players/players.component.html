@@ -1,0 +1,65 @@
+<div class="row row-margin ">
+  <div class=" col-md-2 row-margin"></div>
+  <div class=" col-md-4 ">
+    <div class="bidding">
+      <div class="formCard">
+
+        <div class="bidding-form">
+          <label for="">Bidding Amount : <input [(ngModel)]="biddingAmount" id="teamName"></label>
+          
+          <br>
+          <div *ngFor="let team of teams; let idx = index">
+            <input type="radio" name="radiogroup" (change)="onSelectionChange(team)"
+             [value]="team.id"> {{team.description}} [{{team.nextBidMaxAmount}}]
+          </div>
+          <div *ngIf="playerAvailable">
+            <button type="button" (click)="performTransaction(biddingAmount,currentPlayer.id)" class="btn btn-outline-secondary sold">Sell</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class=" col-md-4">
+    <div id="center">
+      <div class="formCard" >
+        <div class="playerInfo">
+     
+    
+          <div class="player-img" >
+            <!-- <img src="{{currentPlayer.imageUrl}}" class="rounded m-auto d-block" alt=""> -->
+          </div>
+
+          <div class="details">
+            <h2 class="text-center">{{currentPlayer.name}}</h2>
+
+            <div class="row career">
+              <div class="col-sm-6 text-center">Age:</div>
+              <div class="col-sm-6 text-center">{{currentPlayer.age}}</div>
+            </div>
+
+            <div class="row career">
+              <div class="col-sm-6 text-center">Role :</div>
+              <div class="col-sm-6 text-center">Batsman</div>
+            </div>
+            <div class="row career">
+              <div class="col-sm-6 text-center">Batting Style :</div>
+              <div class="col-sm-6 text-center"> Right Handed Bat</div>
+            </div>
+            <div class="row career">
+              <div class="col-sm-6 text-center">Bowling Style :</div>
+              <div class="col-sm-6 text-center"> Right-arm offbreak</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="selectbtn">
+        <button type="button" class="btn btn-outline-secondary usold">UNSOLD</button>
+        <!-- <button type="button" (click)="getNextPlayer()" class="btn btn-outline-primary next">NEXT</button> -->
+        <button type="button" (click)="getNextPlayer()" class="btn btn-outline-secondary nextPlayer">Next Player</button>
+      </div>
+    </div>
+  </div>
+  <div class=" col-md-2 row-margin"></div>
+</div>

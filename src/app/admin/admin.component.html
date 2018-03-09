@@ -1,0 +1,18 @@
+<p>
+  admin works!
+</p>
+
+
+<form #teamForm="ngForm" (ngSubmit)="createTeam(teamForm)">
+
+  <label>Team Id</label>
+  <input type="text" name="tid" #name="ngModel" [(ngModel)]="teamForm.tid"  /><br/>
+
+  <label>Name</label>
+  <input type="text" name="teamName" #name="ngModel" [(ngModel)]="teamForm.teamName" /><br/>
+
+  <label>Intial Amount</label>
+  <input type="text" name="initialAmount" #name="ngModel" [(ngModel)]="teamForm.initialAmount"/><br/>
+
+  <input type="submit" value="Add Team"/>
+</form>
