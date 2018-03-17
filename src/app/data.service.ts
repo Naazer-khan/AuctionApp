@@ -1,22 +1,50 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { Team} from './model/team';
 import { Player } from './model/player';
 @Injectable()
 export class DataService {
 
+  
 playerList: AngularFireList<any>;
 selectedPlayer: Player = new Player();
 
-  teamList: AngularFireList<Team>;
+  $teamListWithUpdate: any[];
+  // teamList: Team[];
+  
   constructor(private fb: AngularFireDatabase) { 
-    this.teamList = this.fb.list('/teams');
+ //   this.teamList = this.fb.list('/teams');
+  this.getTeamsFromDatabase();
   }
-
-
+  getTeamsFromDatabase(): Team[] {
+    
+    var teamList = [];
+    this.fb.database.ref('/teams').once('value').then(
+    (snapshot) => {
+      snapshot.forEach(element => {
+          var z = element.toJSON();
+          z["$key"] = element.key;
+          console.log("individual " + JSON.stringify(z) + " " + element.key);
+          teamList.push(z as Team);
+        });   
+      //console.log("promise " + JSON.stringify(snapshot));
+      //console.log("promise2 " + JSON.stringify(snapshot.val()));
+    }).then(function() {
+      return "";
+    });
+   
+    return teamList;    
+  }
+  
   getCandidateList(){
     this.playerList = this.fb.list('players');
     return this.playerList;
+  }
+
+
+  // https://firebase.google.com/docs/database/web/read-and-write#read_data_once
+  getTeamList() : Team[] {    
+    return this.getTeamsFromDatabase();
   }
 
   insertPlayer(player: Player){

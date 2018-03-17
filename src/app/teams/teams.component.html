@@ -8,7 +8,9 @@
 <!-- {{team | json}} -->
 <!-- <div>{{team.description}}</div>
 </div> -->
-<div class="container-fluid">
+<button (click)="printTeams()" name="Print teams">Print teamss</button>
+
+ <div class="container-fluid">
   <div class="row">
     <div class="col-md-3" *ngFor="let team of teams;">
       <div class="heading-team">

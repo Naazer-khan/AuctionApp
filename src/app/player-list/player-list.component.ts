@@ -9,17 +9,17 @@ import { Player } from '../model/player';
   styleUrls: ['./player-list.component.css']
 })
 export class PlayerListComponent implements OnInit {
-  playerList: Player[];
+  playerList2: Player[];
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     var x = this.dataService.getCandidateList();
     x.snapshotChanges().subscribe(item => {
-      this.playerList = [];
+      this.playerList2 = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
          y["$key"] = element.key;
-        this.playerList.unshift(y as Player);
+        this.playerList2.unshift(y as Player);
       });
     });
   }

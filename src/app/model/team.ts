@@ -1,4 +1,5 @@
 export class Team {
+    $key: string;
     tid: number;
     name: string;
     numberOfPlayersBought: number;

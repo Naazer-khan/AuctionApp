@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
-import { PlayerDetail } from '../PlayerType';
+//import { PlayerDetail } from '../PlayerType';
 //import { allPlayers } from '../FakeData';
 import { RemainingPlayersComponent } from '../remaining-players/remaining-players.component';
-import { fakeTeams } from '../FakeData';
+//import { fakeTeams } from '../FakeData';
 import {CommunicationServiceService} from '../communication-service.service';
 import { DataService } from '../data.service';
 import { Player } from '../model/player';
@@ -14,7 +14,7 @@ import { Player } from '../model/player';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-  allCandidates: Player[] = [];
+  
  // RemainingPlayersComponentRef:RemainingPlayersComponent;
   basePrice: number = 200;
   maxPlayers: number = 12;
@@ -29,36 +29,43 @@ export class PlayersComponent implements OnInit {
     value: null,
     description: null
   };
+
+  allCandidates: Player[];
   
-  constructor(public communicationService: CommunicationServiceService
-    , private dataService: DataService) {
-    this.index=0;
-    //this.currentPlayer = this.allPlayers[this.index];
-    //this.playerAvailable = !this.currentPlayer.sold;
-    this.teams = fakeTeams;
 
-    // select the first one
-    if(this.teams) {
-      //this.onSelectionChange(this.teams[0]);  
-    }
+  ngOnInit() {
 
-    var x = dataService.getCandidateList(); 
+    var x = this.dataService.getCandidateList(); 
+    var arr = [];
     x.snapshotChanges().subscribe(item => {
       this.allCandidates = [];
       item.forEach(element => {
         //console.log("in subscribe data " + element);
         var y = element.payload.toJSON();
         y["$key"] = element.key;
+        console.log("y is " + JSON.stringify(y) );
         this.allCandidates.push(y as Player);
+        //arr.push(y as Player);
+        //console.log("arr" + arr);
       });
+      this.currentPlayer = this.allCandidates[this.index];
+      this.playerAvailable = !this.currentPlayer.status;
     });
-    console.log(" allCandidates is from firebase "+JSON.stringify( this.allCandidates));
-   
-    this.currentPlayer = this.allCandidates[this.index];
-    this.playerAvailable = !this.currentPlayer.status;
-    console.log("current player is from firebase "+JSON.stringify( this.currentPlayer));
-   }
+  }
 
+  constructor(public communicationService: CommunicationServiceService
+    , private dataService: DataService) {
+    this.index=0;
+    //this.currentPlayer = this.allPlayers[this.index];
+    //this.playerAvailable = !this.currentPlayer.sold;
+    //this.teams = [];// fakeTeams;
+
+    // select the first one
+    if(this.teams) {
+      //this.onSelectionChange(this.teams[0]);  
+    }
+    
+    }
    getNextCandidate() {
      this.index++;
      if(this.index >= this.allCandidates.length)
@@ -67,10 +74,6 @@ export class PlayersComponent implements OnInit {
      this.currentPlayer = this.allCandidates[this.index];
      this.playerAvailable = !this.currentPlayer.status;
    }
-
-  ngOnInit() {
-    // this._flashMessagesService.show('We are in about component!', { cssClass: 'alert-success', timeout: 5000 });
-  }
 
   onSelectionChange(entry) {
     // clone the object for immutability
