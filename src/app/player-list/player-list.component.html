@@ -1,0 +1,26 @@
+<h6 class="text-center">Player Register</h6><br/>
+<table class="table table-sm table-hover">
+  <thead>
+    <th>Name</th>
+    <th>Runs</th>
+    <th>Wickets</th>
+    <th>Update</th>
+    <th>Delete</th>
+    
+  </thead>
+  <tr *ngFor="let player of playerList">
+      <td>{{player.name}}</td>
+      <td>{{player.run}}</td>
+      <td>{{player.wicket}}</td>
+      <td>
+        <a class="btn" (click)="onEdit(player)">
+          <i class="fa fa-pencil-square-o"></i>
+        </a>
+      </td>
+      <td>
+          <a class="btn" (click)="onDelete(player.$key)">
+              <i class="fa fa-trash-o"></i>
+            </a>
+      </td>
+  </tr>
+</table>

@@ -1,20 +1,49 @@
-.row-margin{
+.row-margin {
     margin-left: 0;
     margin-right: 0;
 }
 
 .remaining-player {
-    font-size: 0.5em;
+    font-size: 1.3rem;
     border: 3px solid;
     border-radius: 50%;
     text-align: center;
-    margin: 18px 10px;
-    padding: 1.5em 1.7em;
+    margin: 2px 10px;
+    padding: 0.7em 0.9em;
     display: inline-block;
-    background: url(/assets/images/remaining-p.png) no-repeat;
     background-size: cover;
-} 
-.remaining-player p{
+    box-shadow: inset 2px 2px 20px 2px;
+}
+
+.remaining-player p {
     margin-bottom: 0px;
-   
-} 
+    color: black;
+}
+
+.player-remaining {
+    background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+     margin-bottom: 15px;
+    padding: 1px;
+    font-size: 2rem;
+    box-shadow: 3px 4px 18px 0px;
+    margin-top: 7px;
+}
+
+.player-remaining h2 {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1px;
+}
+
+.re-back {
+    border: 1px solid #26bbb6;
+    border-radius: 13px;
+    color: #26bbb6;
+    box-shadow: inset 2px 2px 5px 2px;
+}
+
+/*animation====*/
+
+/*===animation*/

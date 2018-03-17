@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
     additionalFields.remainingAmount=3;
 
     console.log("form value: " + JSON.stringify(form.value) + ",  additionalField-"+JSON.stringify(additionalFields));
-    this.dataService.addTeam(form.value, additionalFields);
+    //this.dataService.addTeam(form.value, additionalFields);
 
   }
 

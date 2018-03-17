@@ -1,9 +1,12 @@
-<p>
-  Upcoming Players to bid 
-</p>
-
-<div  class="text-center ">
-  <span class="remaining-player" *ngFor="let player of unsoldPlayers;" >
-      <p > {{player.name |uppercase| truncate : 2 : '' }} </p>
-  </span>
+<div class="player-remaining">
+  <h2>
+    Upcoming Players to bid
+  </h2>
 </div>
+
+<div class="container-fluid">
+  <marquee class="text-center re-back">
+  <span class="remaining-player" *ngFor="let player of unsoldPlayers;">
+    <p> {{player.name |uppercase| truncate : 2 : '' }} </p>
+  </span>
+</marquee></div>

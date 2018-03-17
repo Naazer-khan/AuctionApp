@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h2>Player Register</h2>
+  <form #playerForm="ngForm" (ngSubmit)="onSubmit(playerForm)">
+      <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="dataService.selectedPlayer.$key">
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" name="name" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.name" placeholder="Name" required>
+        <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="alert alert-danger"> -->
+    </div>
+    <div class="form-group">
+      <label>Batting Style</label>
+      <input class="form-control" name="batting" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.batting" placeholder="Batting Style" required>
+    </div>
+    <div class="form-group">
+      <label>Bowling Style</label>
+      <input class="form-control" name="bowling" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.bowling" placeholder="Bowling Style" required>
+    </div>
+    <div class="form-group">
+      <label>Role</label>
+      <input class="form-control" name="role" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.role" placeholder="Role" required>
+    </div>
+    <div class="form-group">
+      <label>Runs</label>
+      <input class="form-control" name="run" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.run" placeholder="Runs" required>
+    </div>
+    <div class="form-group">
+      <label>Wicket</label>
+      <input class="form-control" name="wicket" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.wicket" placeholder="Wickets" required>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-default" type="submit" [disabled]="!playerForm.valid">
+        <i class="fa fa-floppy-o"></i>
+         Submit</button>
+         </div>
+    </form>
+  </div>
+    <div class="col-md-5">
+      <app-player-list></app-player-list>
+    </div>
+  </div>
+</div>

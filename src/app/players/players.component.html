@@ -1,40 +1,73 @@
+
+ 
 <div class="row row-margin ">
-  <div class=" col-md-2 row-margin"></div>
-  <div class=" col-md-4 ">
-    <div class="bidding">
-      <div class="formCard">
+  <div class=" col-md-2 row-margin "></div>
+  <div class=" col-md-4 col-sm-6 ">
+    <div class="bidding equal">
+     
+      
+      <div class="bidding-form text-center">
+        <label for="" class="biddin-amount">Bidding Amount </label>
+        <input [(ngModel)]="biddingAmount" id="teamName">
 
-        <div class="bidding-form">
-          <label for="">Bidding Amount : <input [(ngModel)]="biddingAmount" id="teamName"></label>
-          
-          <br>
-          <div *ngFor="let team of teams; let idx = index">
-            <input type="radio" name="radiogroup" (change)="onSelectionChange(team)"
-             [value]="team.id"> {{team.description}} [{{team.nextBidMaxAmount}}]
-          </div>
-          <div *ngIf="playerAvailable">
-            <button type="button" (click)="performTransaction(biddingAmount,currentPlayer.id)" class="btn btn-outline-secondary sold">Sell</button>
-          </div>
+
+        <br>
+        <div *ngFor="let team of teams; let idx = index" class="radio-one">
+          <input type="radio" name="radiogroup" (change)="onSelectionChange(team)" [value]="team.id"> &emsp;&emsp;{{team.description}} [{{team.nextBidMaxAmount}}]
         </div>
-
       </div>
+      
+      <div class="selectbtn">
+        <span *ngIf="playerAvailable">
+          <button type="button" (click)="performTransaction(biddingAmount,currentPlayer.id)" class="btn btn-outline-secondary sold">Sell</button>
+        </span>
+        <button type="button" (click)="getNextCandidate()" class="btn btn-outline-secondary nextPlayer">Next Player</button>
+      </div>
+
     </div>
   </div>
-  <div class=" col-md-4">
-    <div id="center">
-      <div class="formCard" >
-        <div class="playerInfo">
-     
-    
-          <div class="player-img" >
+  <div class=" col-md-4 col-sm-6 ">
+    <div class="formCard equal">
+      <div class="playerInfo">
+        <div class="row align-items-center">
+          <div class="col-xl-4" style="padding-right:0">
+
             <!-- <img src="{{currentPlayer.imageUrl}}" class="rounded m-auto d-block" alt=""> -->
+            <div class="player-img text-center">
+              <img src="{{currentPlayer.imageUrl}}" class="mx-auto d-block" alt="">
+              <div class="pname">{{currentPlayer.name}}</div>
+
+            </div>
+
           </div>
-
-          <div class="details">
-            <h2 class="text-center">{{currentPlayer.name}}</h2>
-
-            <div class="row career">
-              <div class="col-sm-6 text-center">Age:</div>
+          <div class="col-xl-8">
+            <div class="details">
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td scope="row">Role </td>
+                    <td>Batsman </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Batting Style </td>
+                    <td>Right Handed Bat </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Bowling Style </td>
+                    <td>Right-arm offbreak </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Runs </td>
+                    <td>2000 </td>
+                  </tr>
+                  <tr>
+                    <td scope="row">Wickets </td>
+                    <td>15</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--<div class="row career ">
+              <div class="col-sm-6 text-center ">Age:</div>
               <div class="col-sm-6 text-center">{{currentPlayer.age}}</div>
             </div>
 
@@ -49,17 +82,17 @@
             <div class="row career">
               <div class="col-sm-6 text-center">Bowling Style :</div>
               <div class="col-sm-6 text-center"> Right-arm offbreak</div>
-            </div>
+            </div> -->
 
+            </div>
           </div>
         </div>
       </div>
-      <div class="selectbtn">
-        <button type="button" class="btn btn-outline-secondary usold">UNSOLD</button>
-        <!-- <button type="button" (click)="getNextPlayer()" class="btn btn-outline-primary next">NEXT</button> -->
-        <button type="button" (click)="getNextPlayer()" class="btn btn-outline-secondary nextPlayer">Next Player</button>
-      </div>
     </div>
   </div>
-  <div class=" col-md-2 row-margin"></div>
+  <div class=" col-md-2 row-margin "></div>
+
 </div>
+<app-remaining-players></app-remaining-players>
+
+<app-teams></app-teams>

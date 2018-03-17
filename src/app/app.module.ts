@@ -11,11 +11,16 @@ import { TeamsComponent } from './teams/teams.component'; // <-- NgModel lives h
 import { CommunicationServiceService} from './communication-service.service';
 import { AdminComponent } from './admin/admin.component';
 
+import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { ToastrModule } from 'ngx-toastr';
  
 import {DataService} from './data.service';
-import { AngularFireModule } from 'angularfire2';
+
 import { environment } from '../environments/environment';
+import { AppRoutingModule } from './/app-routing.module';
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { PlayerListComponent } from './player-list/player-list.component';
  
 @NgModule({
   declarations: [
@@ -23,13 +28,17 @@ import { environment } from '../environments/environment';
     PlayersComponent,
     RemainingPlayersComponent,
     TeamsComponent,
-    AdminComponent
+    AdminComponent,
+    PlayerDetailComponent,
+    PlayerListComponent
   ],
   imports: [TruncateModule,
     BrowserModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment),
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AppRoutingModule,
+    // ToastrModule.forRoot()
   ],
   providers: [CommunicationServiceService, DataService],
   bootstrap: [AppComponent]
