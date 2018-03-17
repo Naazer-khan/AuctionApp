@@ -1,20 +1,17 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
-//import { PlayerDetail } from '../PlayerType';
-//import { allPlayers } from '../FakeData';
 import { RemainingPlayersComponent } from '../remaining-players/remaining-players.component';
-//import { fakeTeams } from '../FakeData';
-import {CommunicationServiceService} from '../communication-service.service';
-import { DataService } from '../data.service';
+import {CommunicationServiceService} from '../services/communication-service.service';
+import { DataService } from '../services/data.service';
 import { Player } from '../model/player';
 import { Team } from '../model/team';
 
 
 @Component({
   selector: 'app-players',
-  templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+  templateUrl: './Dashboard.component.html',
+  styleUrls: ['./Dashboard.component.css']
 })
-export class PlayersComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   
  // RemainingPlayersComponentRef:RemainingPlayersComponent;
   basePrice: number = 200;

@@ -1,46 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { TruncateModule } from 'ng2-truncate';
-
-import { AppComponent } from './app.component';
-import { PlayersComponent } from './players/players.component';
 import { FormsModule } from '@angular/forms';
-import { RemainingPlayersComponent } from './remaining-players/remaining-players.component';
-import { TeamsComponent } from './teams/teams.component'; // <-- NgModel lives here
 
-import { CommunicationServiceService} from './communication-service.service';
-import { AdminComponent } from './admin/admin.component';
+import { TruncateModule } from 'ng2-truncate';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-// import { ToastrModule } from 'ngx-toastr';
- 
-import {DataService} from './data.service';
+
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './Dashboard/Dashboard.component';
+import { RemainingPlayersComponent } from './remaining-players/remaining-players.component';
+import { TeamsComponent } from './teams/teams.component';
+
+import { TeamManagementComponent } from './TeamManagement/TeamManagement.component';
+import { PlayerManagementComponent } from './PlayerManagement/PlayerManagement.component';
+
+import { DataService } from './services/data.service';
+import { CommunicationServiceService } from './services/communication-service.service';
+
 
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './/app-routing.module';
-import { PlayerDetailComponent } from './player-detail/player-detail.component';
-import { PlayerListComponent } from './player-list/player-list.component';
-import { TeamListComponent } from './team-list/team-list.component';
- 
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
-    PlayersComponent,
+    DashboardComponent,
     RemainingPlayersComponent,
     TeamsComponent,
-    AdminComponent,
-    PlayerDetailComponent,
-    PlayerListComponent,
-    TeamListComponent
+    TeamManagementComponent,
+    PlayerManagementComponent
   ],
-  imports: [TruncateModule,
+  imports: [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AppRoutingModule,
-    // ToastrModule.forRoot()
+    TruncateModule 
   ],
   providers: [CommunicationServiceService, DataService],
   bootstrap: [AppComponent]

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
  
-import { DataService } from '../data.service';
-// import { ToastrService } from 'ngx-toastr';
+import { DataService } from '../services/data.service';
+
 @Component({
-  selector: 'app-player-detail',
-  templateUrl: './player-detail.component.html',
-  styleUrls: ['./player-detail.component.css'],
+  selector: 'app-player-management',
+  templateUrl: './PlayerManagement.component.html',
+  styleUrls: ['./PlayerManagement.component.css'],
   providers :[DataService]
 })
-export class PlayerDetailComponent implements OnInit {
+export class PlayerManagementComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 

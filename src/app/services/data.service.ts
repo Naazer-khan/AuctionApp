@@ -1,11 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Team } from './model/team';
-import { Player } from './model/player';
-import { CommunicationServiceService } from './services/communication-service.service';
+
+import { Team } from '../model/team';
+import { Player } from '../model/player';
+
+import { CommunicationServiceService } from './communication-service.service';
+
 @Injectable()
 export class DataService {
-
 
   auctionSettings: any;
   teamRef: AngularFireList<any>;
@@ -53,7 +55,6 @@ export class DataService {
       Player.counter = item.length;
       console.log("Player counter is set to : " + Player.counter)
       this.commService.sendMessageToUpdateCurrentPlayer();
-      this.commService.sendMessageToCreateTeamList();
     });
 
   }

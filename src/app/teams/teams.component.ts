@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { fakeTeams } from '../FakeData';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
+import { CommunicationServiceService } from '../services/communication-service.service';
+
 import { Team } from '../model/team';
-import { CommunicationServiceService } from '../communication-service.service';
 
 @Component({
   selector: 'app-teams',
@@ -11,10 +11,9 @@ import { CommunicationServiceService } from '../communication-service.service';
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent implements OnInit {
-  // teams :Team[] = [];
-
-
+  
   teams: any[][];
+  
   constructor(private dataService: DataService
     , private commService: CommunicationServiceService) { }
 
@@ -22,7 +21,6 @@ export class TeamsComponent implements OnInit {
 
     this.commService.playersPopulated.subscribe(
       data => {
-
         let players = this.dataService.playerList;
         for (var p in players) {
           this.teams[p["tid"]].push(p);
@@ -32,7 +30,6 @@ export class TeamsComponent implements OnInit {
     console.log("teams in Team component - " + this.dataService.teamList);
 
   }
-
 
   printTeams() {
     console.log("teams in Team component - " + this.dataService.teamList);
