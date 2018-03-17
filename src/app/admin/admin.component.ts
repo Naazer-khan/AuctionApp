@@ -18,14 +18,38 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     console.log("team - "+JSON.stringify(this.newTeam));
   }
+  onEdit(tm: Team) {
+    console.log("on update team object is "+ JSON.stringify(tm));
+    this.dataService.selectedTeam = Object.assign({}, tm);
+  }
 
-  createTeam(form) {
-    let additionalFields: any = {};
-    additionalFields.remainingAmount=3;
+  onDelete(key: string) {
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.dataService.deleteTeam(key);
+      // this.tostr.warning("Deleted Successfully", "Employee register");
+    }
+  }
 
-    console.log("form value: " + JSON.stringify(form.value) + ",  additionalField-"+JSON.stringify(additionalFields));
+
+  createTeam(form:NgForm) {
+    if(form.value.$key == null){
+      this.dataService.insertTeam(form.value);
+      console.log('Submitted Succcessfully',form.value);
+    }else{
+      this.dataService.updateTeam(form.value);
+      console.log('update Succcessfully');
+
+    }
+    form.reset();
+    
+    // let additionalFields: any = {};
+    // additionalFields.remainingAmount=3;
+
+    //console.log("form value: " + JSON.stringify(form.value) + ",  additionalField-"+JSON.stringify(additionalFields));
     //this.dataService.addTeam(form.value, additionalFields);
 
   }
+
+  
 
 }

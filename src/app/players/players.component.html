@@ -12,14 +12,14 @@
 
 
         <br>
-        <div *ngFor="let team of teams; let idx = index" class="radio-one">
-          <input type="radio" name="radiogroup" (change)="onSelectionChange(team)" [value]="team.id"> &emsp;&emsp;{{team.description}} [{{team.nextBidMaxAmount}}]
+        <div *ngFor="let team of ds.teamList; let idx = index" class="radio-one">
+          <input type="radio" name="radiogroup" (change)="onSelectionChange(team)" [value]="team.id"> &emsp;&emsp;{{team.name}} [{{team.nextBidMaxAmount}}]
         </div>
       </div>
       
       <div class="selectbtn">
         <span *ngIf="playerAvailable">
-          <button type="button" (click)="performTransaction(biddingAmount,currentPlayer.id)" class="btn btn-outline-secondary sold">Sell</button>
+          <button type="button" (click)="performTransaction(biddingAmount)" class="btn btn-outline-secondary sold">Sell</button>
         </span>
         <button type="button" (click)="getNextCandidate()" class="btn btn-outline-secondary nextPlayer">Next Player</button>
       </div>

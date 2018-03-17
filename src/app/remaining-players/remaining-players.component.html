@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
   <marquee class="text-center re-back">
-  <span class="remaining-player" *ngFor="let player of unsoldPlayers;">
+  <span class="remaining-player" *ngFor="let player of dataService.unsoldPlayerList;">
     <p> {{player.name |uppercase| truncate : 2 : '' }} </p>
   </span>
 </marquee></div>

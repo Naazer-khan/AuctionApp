@@ -20,7 +20,7 @@
 a.navbar-brand{
     text-decoration: none;
     color: white;
-    font-weight: 700;
+    font-weight: 400;
 }
 .navbar {
     padding: 0.4rem 2rem;
@@ -36,7 +36,7 @@ a.navbar-brand{
 
 .nav-item a {
     color: white;
-    padding: 6px 3px;
+    padding: 4px 3px;
 }
 .nav-item a:hover{
     color:#4136f4

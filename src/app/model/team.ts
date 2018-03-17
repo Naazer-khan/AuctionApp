@@ -1,11 +1,18 @@
 export class Team {
-    $key: string;
+    log(): any {
+        console.log( JSON.stringify(this));
+    }
+    static counter: any = 0;
+    static getNextId(): any {
+        return this.counter++;    
+    }
+    $key?: string;
     tid: number;
     name: string;
+    imageUrl: string;
     numberOfPlayersBought: number;
-    initialAmount: number;
     reservedAmount: number;
     nextBidMaxAmount: number;
     remainingAmount: number;
-    playerIds: number[];
+    playerIds: string;
 }

@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { PlayerDetail } from '../PlayerType';
-import { allPlayers } from '../FakeData';
+//import { allPlayers } from '../FakeData';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
 import {CommunicationServiceService} from '../communication-service.service';
+import { Player } from '../model/player';
+import { DataService } from '../data.service';
  
 @Component({
   selector: 'app-remaining-players',
@@ -16,11 +18,12 @@ import {CommunicationServiceService} from '../communication-service.service';
   styleUrls: ['./remaining-players.component.css']
 })
 export class RemainingPlayersComponent implements OnInit {
-  allPlayersArray: PlayerDetail[] = allPlayers;
-  unsoldPlayers: PlayerDetail[] = [];
+  //allPlayersArray: Player[] ;//= allPlayers;
+  //unsoldPlayers: Player[] = [];
   // TODO : update unsold player list here not in UI/html
   temp: any;
-  constructor(public communicationService: CommunicationServiceService) {
+  constructor(public communicationService: CommunicationServiceService
+    ,private dataService: DataService) {
     
     // for( var p  in this.allPlayersArray) {
     //   if(!this.allPlayersArray[p].sold) {
@@ -31,22 +34,25 @@ export class RemainingPlayersComponent implements OnInit {
    }
 
   ngOnInit(){
-    this.refreshUnsoldPlayers();
+    //this.dataService.getUnsoldPlayerFromDB();
     this.communicationService.unsoldPlayerSubject.subscribe(
        data => {
          console.log("remaingin player update "+data);
-         this.refreshUnsoldPlayers();
+         //this.dataService.getUnsoldPlayerFromDB();
       }
     );
    }
-  refreshUnsoldPlayers() {
+  refreshUnsoldPlayers0() {
     console.log("updating unsoldPlayer array");
-    this.unsoldPlayers = [];
-    for(var i=0; i<this.allPlayersArray.length; i++) {
-      if(!(this.allPlayersArray[i].sold)) {
-        this.unsoldPlayers.push(this.allPlayersArray[i]);
-      }
-    }
+    //this.unsoldPlayers = [];
+    //this.allPlayersArray = this.dataService.getCandidateList();
+    // let allPlayers = this.dataService.getPlayersOnceFromDatabase();
+    // console.log("getPlayersOnceFromDatabase : "+allPlayers);
+    // for(var i=0; i < allPlayers.length; i++) {
+    //   if(!(allPlayers[i].isSold)) {
+    //     this.unsoldPlayers.push(allPlayers[i]);
+    //   }
+    // }
   }
 
   // ngOnInit0() {

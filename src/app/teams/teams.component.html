@@ -8,13 +8,13 @@
 <!-- {{team | json}} -->
 <!-- <div>{{team.description}}</div>
 </div> -->
-<button (click)="printTeams()" name="Print teams">Print teamss</button>
+<!-- <button (click)="printTeams()" name="Print teams">Print teamss</button> -->
 
  <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3" *ngFor="let team of teams;">
+    <div class="col-md-3" *ngFor="let team of dataService.teamList;">
       <div class="heading-team">
-        <div class="team-info">{{team.description}}</div>
+        <div class="team-info"><a routerLink="/teamlist">{{team.name}}</a></div>
       </div>
 
       <div class="row">
@@ -30,7 +30,7 @@
               </tr>
               <tr>
                 <td scope="row">Res Amt</td>
-                <td> {{team.reserveAmount}}</td>
+                <td> {{team.reservedAmount}}</td>
               </tr>
               <tr>
                 <td scope="row">NextBD Amt</td>

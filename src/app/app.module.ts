@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './/app-routing.module';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { PlayerListComponent } from './player-list/player-list.component';
+import { TeamListComponent } from './team-list/team-list.component';
  
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PlayerListComponent } from './player-list/player-list.component';
     TeamsComponent,
     AdminComponent,
     PlayerDetailComponent,
-    PlayerListComponent
+    PlayerListComponent,
+    TeamListComponent
   ],
   imports: [TruncateModule,
     BrowserModule,
