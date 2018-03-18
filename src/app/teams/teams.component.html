@@ -10,16 +10,19 @@
 </div> -->
 <!-- <button (click)="printTeams()" name="Print teams">Print teamss</button> -->
 
- <div class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-3" *ngFor="let team of dataService.teamList;">
       <div class="heading-team">
-        <div class="team-info"><a routerLink="/teams">{{team.name}}</a></div>
+        <div class="team-info">
+          <a routerLink="/teams" (click)="ShowButton()" >{{team.name}}</a>
+        </div>
+        <!-- <button (onclick)="updatediv()">hide</button> -->
       </div>
 
-      <div class="row">
+      <div class="row" *ngIf="div1">
         <div class="col-sm-5">
-          <img src="{{team.imageUrl}}"   alt="" class="img-fluid mx-auto d-block"> 
+          <img src="{{team.imageUrl}}" alt="" class="img-fluid mx-auto d-block">
         </div>
         <div class="col-sm-7" style="padding-left:0">
           <table class="table table-bordered">
@@ -40,12 +43,35 @@
           </table>
         </div>
       </div>
-
-      <!-- <div>Remaining Amount : {{team.remainingAmount}}</div>
-      <div>Reserve Amount : {{team.reserveAmount}}</div>
-      <div>NextBid Amount : {{team.nextBidMaxAmount}}</div> -->
-
-
+      <div class="row"*ngIf="div2">
+        <div class="col-sm-5">
+            <table class="table table-sm table-hover">
+                <thead>
+                  <th>Team ID</th>
+                  <th>Name</th>
+                 
+                  <th></th>
+                  <th></th>
+                  
+               </thead>
+                 <tr *ngFor="let team of dataService.teamList">
+                    <td></td>
+                    <td></td>
+                   
+                    <!-- <td>
+                      <a class="btn" (click)="onEdit(team)">
+                        <i class="fa fa-pencil-square-o"></i>
+                      </a>
+                    </td>
+                    <td>
+                        <a class="btn" (click)="onDelete(team.$key)">
+                            <i class="fa fa-trash-o"></i>
+                          </a>
+                    </td> -->
+                </tr>
+              </table>          
+        </div>
+      </div>
     </div>
   </div>
 </div>

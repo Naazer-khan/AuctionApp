@@ -13,12 +13,23 @@ import { Team } from '../model/team';
 export class TeamsComponent implements OnInit {
   
   teams: any[][];
+  div1:boolean;
+  div2:boolean;
   
   constructor(private dataService: DataService
-    , private commService: CommunicationServiceService) { }
-
+    , private commService: CommunicationServiceService) {
+      
+     }
+     
+     ShowButton(){
+       console.log("into fuction show and hide");
+       this.div1 = !true;
+       this.div2 = true;
+     }
+    
   ngOnInit() {
-
+    this.div1 = true;    
+      this.div2 = false;    
     this.commService.playersPopulated.subscribe(
       data => {
         let players = this.dataService.playerList;
@@ -27,11 +38,11 @@ export class TeamsComponent implements OnInit {
         }
         console.log(" all teams and player " + JSON.stringify(this.teams));
       });
-    console.log("teams in Team component - " + this.dataService.teamList);
+    console.log("teams in Team component5454 - " + JSON.stringify(this.dataService.teamList));
 
   }
 
   printTeams() {
-    console.log("teams in Team component - " + this.dataService.teamList);
+    console.log("teams in Team component45 - " + this.dataService.teamList);
   }
 }

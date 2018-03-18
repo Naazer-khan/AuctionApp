@@ -1,3 +1,5 @@
+import { Player } from "./player";
+
 export class Team {
     log(): any {
         console.log( JSON.stringify(this));
@@ -15,4 +17,5 @@ export class Team {
     nextBidMaxAmount: number;
     remainingAmount: number;
     playerIds: string;
+    players? : Player[];
 }

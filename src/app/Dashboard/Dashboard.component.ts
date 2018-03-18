@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     value: null,
     description: null
   };
-
+  
 //  allCandidates: Player[];
   
   msg: Message;

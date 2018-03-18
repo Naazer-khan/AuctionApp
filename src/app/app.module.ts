@@ -37,7 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AppRoutingModule,
-    TruncateModule 
+    TruncateModule
   ],
   providers: [CommunicationServiceService, DataService],
   bootstrap: [AppComponent]

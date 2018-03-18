@@ -5,7 +5,7 @@ import { Team } from '../model/team';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-team-management',
   templateUrl: './TeamManagement.component.html',
   styleUrls: ['./TeamManagement.component.css'],
   providers: [DataService]
@@ -13,6 +13,8 @@ import { NgForm } from '@angular/forms';
 export class TeamManagementComponent implements OnInit {
 
   newTeam: Team = new Team();
+  
+  
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
