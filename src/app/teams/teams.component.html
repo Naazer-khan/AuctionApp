@@ -16,7 +16,7 @@
 
       <div class="heading-team">
         <div class="team-info">
-          <a >nqqqqqqqq {{team | json}}</a>
+          <a > {{team.name}}</a>
         </div>
         <!-- <button (onclick)="updatediv()">hide</button> -->
       </div>
@@ -25,26 +25,11 @@
           <thead>
             <th>Name</th>
             <th>Amt</th>
-
-            <th></th>
-            <th></th>
-
           </thead>
           <tr *ngFor="let p of team.players">
             <!-- <td> {{p | json}} </td> -->
             <td> {{p.name}}</td>
-            <td></td>
-
-            <!-- <td>
-                      <a class="btn" (click)="onEdit(team)">
-                        <i class="fa fa-pencil-square-o"></i>
-                      </a>
-                    </td>
-                    <td>
-                        <a class="btn" (click)="onDelete(team.$key)">
-                            <i class="fa fa-trash-o"></i>
-                          </a>
-                    </td> -->
+            <td>{{p.biddingAmount}}</td>
           </tr>
         </table>
       </div>

@@ -17,4 +17,5 @@ export class Player {
      run: number;
      wicket: number;
      isSold: boolean;
+     biddingAmount:number;
 }

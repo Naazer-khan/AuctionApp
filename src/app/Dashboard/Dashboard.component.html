@@ -37,7 +37,7 @@
 
             <!-- <img src="{{currentPlayer.imageUrl}}" class="rounded m-auto d-block" alt=""> -->
             <div class="player-img text-center">
-              <img src="{{currentPlayer.imageUrl}}" class="mx-auto d-block" alt="">
+              <img src="assets/images/placeholder.jpg" class="mx-auto d-block" alt="">
               <div class="pname">{{currentPlayer.name}}</div>
 
             </div>
@@ -83,17 +83,17 @@
 <app-remaining-players></app-remaining-players>
 <div class="container-fluid">
 <div class="row">
-    <div class="col-md-3" *ngFor="let team of ds.teamList;">
+    <div class="col" *ngFor="let team of ds.teamList;">
       <div class="heading-team">
         <div class="team-info">
-          <a routerLink="/teams" >{{team.name}}</a>
+          <a href="/teams" >{{team.name}} </a>
         </div>
         <!-- <button (onclick)="updatediv()">hide</button> -->
       </div>
 
       <div class="row">
         <div class="col-sm-5">
-          <img src="{{team.imageUrl}}" alt="" class="img-fluid mx-auto d-block">
+          <img src="assets/images/team{{team.tid%4}}.jpg" alt="" class="img-fluid mx-auto d-block">
         </div>
         <div class="col-sm-7" style="padding-left:0">
           <table class="table table-bordered">

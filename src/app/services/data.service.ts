@@ -5,10 +5,14 @@ import { Team } from '../model/team';
 import { Player } from '../model/player';
 
 import { CommunicationServiceService } from './communication-service.service';
+import { BookKeeping } from '../model/bookKeeping';
 
 @Injectable()
 export class DataService {
 
+  currentUser: string = "none";
+  teamLength: number = 3;
+  bookRef: AngularFireList<{}>;
   clientName: string = "/development";
   isAuctionComplete: boolean = false;
   setAuctionCompleted(): any {
@@ -45,6 +49,7 @@ export class DataService {
         y["$key"] = element.key;
         this.teamList.push(y as Team);
       });
+      this.teamLength = item.length;
       Team.counter = item.length;
       console.log("Team counter is set to : " + Team.counter);
       this.commService.setMessageToCurrentTeamLoaded();
@@ -76,6 +81,15 @@ export class DataService {
 
     });
 
+
+
+
+    
+    var bk = this.fb.list(this.clientName+'/BooKeeping');
+    bk.snapshotChanges().subscribe(item => {
+      BookKeeping.counter = item.length;
+    });
+
   }
 
   getCandidateRef() {
@@ -105,6 +119,20 @@ export class DataService {
       wicket: player.wicket,
       isSold: false
     });
+  }
+  insertbookeeping(bookeeping) {
+    console.log("bookiping"+JSON.stringify(bookeeping));
+    this.bookRef = this.fb.list(this.clientName+'/BooKeeping');
+    let nextId = BookKeeping.getNextId();
+    let t = new Date() + "";
+    this.bookRef.push({
+      transactionId: nextId,
+      playerId:bookeeping.playerId,
+      teamId: bookeeping.teamId,
+      playerSoldAt: bookeeping.playerSoldAt,
+      time: t
+    })
+    
   }
 
 
@@ -166,7 +194,7 @@ export class DataService {
   }
 
 
-  updatePlayer(player: Player, isSoldParam = false, soldToTeamId = -1) {
+  updatePlayer(player: Player, isSoldParam = false, soldToTeamId = -1,biddingAmt = 0) {
     
     console.log("Updating Player " + JSON.stringify(player));
     this.playerRef.update(player.$key,
@@ -178,7 +206,8 @@ export class DataService {
         run: player.run,
         wicket: player.wicket,
         isSold: isSoldParam,
-        tid: soldToTeamId
+        tid: soldToTeamId,
+        biddingAmount:biddingAmt
       });
   }
 

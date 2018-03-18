@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'player-management', component: PlayerManagementComponent },
   { path: 'team-management', component: TeamManagementComponent},
-  { path: 'teams', component: TeamsComponent}
+  { path: 'teams', component: TeamsComponent},
+  // { path: 'signup-login', component: TeamsComponent},
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

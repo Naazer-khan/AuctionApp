@@ -16,41 +16,32 @@ import { Player } from '../model/player';
 export class TeamsComponent implements OnInit {
   
   teams: Team[]=[];
-  div1:boolean;
-  div2:boolean;
+  // div1:boolean;
+  // div2:boolean;
   p2 : Player;
-  @Output() teamsChange = new EventEmitter();
+  // @Output() teamsChange = new EventEmitter();
   constructor(private dataService: DataService
     , private commService: CommunicationServiceService
     , private router: Router) {
       
-      this.dataService.miniTeamDisplay = false;
+      //this.dataService.miniTeamDisplay = false;
+      // this.router.navigate(["/teams?refresh=1"]);
      }
      
-     ShowButton(){
+    //  ShowButton(){
        
-      this.dataService.miniTeamDisplay = false;
-      console.log("into fuction show and hide");
-      this.router.navigateByUrl('teams');
-      //  this.div1 = !true;
-      //  this.div2 = true;
-     }
+    //   this.dataService.miniTeamDisplay = false;
+    //   console.log("into fuction show and hide");
+    //   this.router.navigateByUrl('teams');
+    //   //  this.div1 = !true;
+    //   //  this.div2 = true;
+    //  }
     
   ngOnInit() {
     this.updateTheTeams();
   }
 
-  get updateTeam() {
-    return this.teams;
-  } 
-
-  set updateTeam(val) {
-    this.updateTheTeams();  
-  }
-
-  updateTheTeams() {
-
-    
+  updateTheTeams() {    
     
     this.commService.currentTeamLoaded.subscribe(
       data =>{
@@ -86,7 +77,7 @@ export class TeamsComponent implements OnInit {
               this.teams[ this.p2["tid"]  ].players.push(this.p2 as Player);
         }
 
-        this.teamsChange.emit(this.teams);
+        //this.teamsChange.emit(this.teams);
         console.log("single Player updated"+JSON.stringify(this.teams[0]));
 
       }

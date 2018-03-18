@@ -1,10 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
 import { RemainingPlayersComponent } from '../remaining-players/remaining-players.component';
 import {CommunicationServiceService} from '../services/communication-service.service';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { Player } from '../model/player';
 import { Team } from '../model/team';
 import { Message } from '../model/message';
+import { BookKeeping } from '../model/bookKeeping';
 
 
 @Component({
@@ -53,11 +55,16 @@ export class DashboardComponent implements OnInit {
   }
 
   constructor(public communicationService: CommunicationServiceService
-    , private ds: DataService) {
+    , private ds: DataService,private router: Router) {
+    
+    if(this.ds.currentUser == "none") {
+      // this.router.navigate(["/signup-login"]);
+    }
+    //this.router.navigate(["/teams"]);
     this.index=0;
     this.msg = new Message(); 
     this.msg.type = "info";
-    this.msg.message = "Auction Started !!!";
+    this.msg.message = "Auction is in progress !!!";
     //this.currentPlayer = this.allPlayers[this.index];
     //this.playerAvailable = !this.currentPlayer.sold;
     //this.teams = this.dataService.teamList;// fakeTeams;
@@ -108,6 +115,7 @@ export class DashboardComponent implements OnInit {
 
     // update the player sold status 
     this.currentPlayer.isSold = true;
+    //this.currentPlayer.biddingAmount = biddingAmount;
     // disable the sell button for this player
     this.playerAvailable = false;
     
@@ -136,10 +144,15 @@ export class DashboardComponent implements OnInit {
     console.log("current team : " + JSON.stringify(currentTeam));
     
     this.ds.updateTeamAfterSellTransaction(currentTeam);
-    this.ds.updatePlayer(this.currentPlayer, true, currentTeam.tid);
+    this.ds.updatePlayer(this.currentPlayer, true, currentTeam.tid,biddingAmount);
     this.communicationService.sendMessageToUpdateUnsoldPlayers();
-    
+    let bookeeping = new BookKeeping();
+    bookeeping.playerId =   this.currentPlayer.pid;
+    bookeeping.playerSoldAt = biddingAmount;
+    bookeeping.teamId = currentTeam.tid;
+    this.ds.insertbookeeping(bookeeping);
   }
+
 
   setMessageToAuctionComplete() {
     this.ds.setAuctionCompleted();
