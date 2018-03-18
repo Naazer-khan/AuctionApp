@@ -27,8 +27,6 @@ export class PlayerManagementComponent implements OnInit {
       console.log('update Succcessfully')
       playerForm.reset();
     }
-   
-   
   }
 
 }

@@ -4,6 +4,7 @@ import {CommunicationServiceService} from '../services/communication-service.ser
 import { DataService } from '../services/data.service';
 import { Player } from '../model/player';
 import { Team } from '../model/team';
+import { Message } from '../model/message';
 
 
 @Component({
@@ -30,8 +31,10 @@ export class DashboardComponent implements OnInit {
 
 //  allCandidates: Player[];
   
+  msg: Message;
 
   ngOnInit() {
+    
     var x = this.ds.getCandidateRef(); 
     this.communicationService.currentPlayerToBidOn.subscribe(
       data => {
@@ -41,29 +44,22 @@ export class DashboardComponent implements OnInit {
         //this.dataService.getUnsoldPlayerFromDB();
      }
    );
-    // var arr = [];
-    // x.snapshotChanges().subscribe(item => {
-    //   this.allCandidates = [];
-    //   item.forEach(element => {
-    //     //console.log("in subscribe data " + element);
-    //     var y = element.payload.toJSON();
-    //     y["$key"] = element.key;
-    //     console.log("y is " + JSON.stringify(y) );
-    //     this.allCandidates.push(y as Player);
-    //     //arr.push(y as Player);
-    //     //console.log("arr" + arr);
-    //   });
-    //   this.currentPlayer = this.allCandidates[this.index];
-    //   this.playerAvailable = !this.currentPlayer.isSold;
-    // });
+   this.communicationService.auctionCompleted.subscribe(
+     data => {
+      this.setMessageToAuctionComplete();
+     }
+   )
   }
 
   constructor(public communicationService: CommunicationServiceService
     , private ds: DataService) {
     this.index=0;
+    this.msg = new Message(); 
+    this.msg.type = "info";
+    this.msg.message = "Auction Started !!!";
     //this.currentPlayer = this.allPlayers[this.index];
     //this.playerAvailable = !this.currentPlayer.sold;
-   // this.teams = this.dataService.teamList;// fakeTeams;
+    //this.teams = this.dataService.teamList;// fakeTeams;
 
     // select the first one
     //if(this.teams) {
@@ -102,6 +98,9 @@ export class DashboardComponent implements OnInit {
     let currentTeam = this.ds.teamList[this.selectedTeam.tid];
     if(biddingAmount > currentTeam.nextBidMaxAmount )
     {
+      this.msg = new Message(); 
+      this.msg.type = "warning";
+      this.msg.message = "Bid amount exceeds max amount to bid for the given team!";
       console.log("can't buy as not enough money to buy all 12 players");
       return;
     }
@@ -139,6 +138,13 @@ export class DashboardComponent implements OnInit {
     this.ds.updatePlayer(this.currentPlayer, true, currentTeam.tid);
     this.communicationService.sendMessageToUpdateUnsoldPlayers();
     
+  }
+
+  setMessageToAuctionComplete() {
+    this.ds.setAuctionCompleted();
+    this.msg = new Message(); 
+    this.msg.type = "info";
+    this.msg.message = "Auction Completed :)";
   }
 
   sendMessage() {

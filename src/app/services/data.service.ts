@@ -9,6 +9,10 @@ import { CommunicationServiceService } from './communication-service.service';
 @Injectable()
 export class DataService {
 
+  isAuctionComplete: boolean = false;
+  setAuctionCompleted(): any {
+    this.isAuctionComplete = true;
+  }
   auctionSettings: any;
   teamRef: AngularFireList<any>;
   playerRef: AngularFireList<any>;
@@ -50,11 +54,15 @@ export class DataService {
           this.unsoldPlayerList.push(y as Player)
         }
       });
-      
+      if(this.unsoldPlayerList.length == 0) {
+        this.commService.setMessageToAuctionComplete();
+      }
+
       console.log("unsold Players now are : " + JSON.stringify(this.unsoldPlayerList));
       Player.counter = item.length;
       console.log("Player counter is set to : " + Player.counter)
       this.commService.sendMessageToUpdateCurrentPlayer();
+
     });
 
   }

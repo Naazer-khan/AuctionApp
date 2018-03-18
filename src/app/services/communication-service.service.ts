@@ -8,6 +8,8 @@ export class CommunicationServiceService {
   public unsoldPlayerSubject = new Subject<any>();
   public currentPlayerToBidOn = new Subject<any>();
   public playersPopulated = new Subject<any>();
+  public auctionCompleted = new Subject<any>();
+  
   constructor() { }
 
   sendMessageToUpdateUnsoldPlayers() {
@@ -23,6 +25,10 @@ export class CommunicationServiceService {
     console.log("SUBJECT: All players populated. sending message to create full team list");
     this.playersPopulated.next(1);
   }
-  
+
+  setMessageToAuctionComplete(): any {
+    this.auctionCompleted.next(1);
+  }
+    
 
 }

@@ -1,11 +1,14 @@
-
+<div class="status-message" >
+  <div class="text-center" >
+    <p [ngClass]="(msg.type=='info')?'status-message-green':'status-message-red'">{{msg.message}}</p>
+  </div>
+</div>
  
 <div class="row row-margin ">
   <div class=" col-md-2 row-margin "></div>
   <div class=" col-md-4 col-sm-6 ">
+    
     <div class="bidding equal">
-     
-      
       <div class="bidding-form text-center">
         <label for="" class="biddin-amount">Bidding Amount </label>
         <input [(ngModel)]="biddingAmount" id="teamName">
@@ -66,24 +69,7 @@
                   </tr>
                 </tbody>
               </table>
-              <!--<div class="row career ">
-              <div class="col-sm-6 text-center ">Age:</div>
-              <div class="col-sm-6 text-center">{{currentPlayer.age}}</div>
-            </div>
-
-            <div class="row career">
-              <div class="col-sm-6 text-center">Role :</div>
-              <div class="col-sm-6 text-center">Batsman</div>
-            </div>
-            <div class="row career">
-              <div class="col-sm-6 text-center">Batting Style :</div>
-              <div class="col-sm-6 text-center"> Right Handed Bat</div>
-            </div>
-            <div class="row career">
-              <div class="col-sm-6 text-center">Bowling Style :</div>
-              <div class="col-sm-6 text-center"> Right-arm offbreak</div>
-            </div> -->
-
+              
             </div>
           </div>
         </div>
@@ -93,6 +79,8 @@
   <div class=" col-md-2 row-margin "></div>
 
 </div>
+
 <app-remaining-players></app-remaining-players>
+
 
 <app-teams></app-teams>

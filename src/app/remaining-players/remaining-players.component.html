@@ -1,12 +1,22 @@
+
+
 <div class="player-remaining">
   <h2>
-    Upcoming Players to bid
-  </h2>
+
+    <span *ngIf="dataService.isAuctionComplete; then DisplayMessage else AuctionIsOn">
+    </span>
+
+    <ng-template #AuctionIsOn>Upcoming Players to bid</ng-template>
+
+    <ng-template #DisplayMessage>All players sold!</ng-template>
+
+    </h2>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!dataService.isAuctionComplete">
   <marquee class="text-center re-back">
   <span class="remaining-player" *ngFor="let player of dataService.unsoldPlayerList;">
     <p> {{player.name |uppercase| truncate : 2 : '' }} </p>
   </span>
 </marquee></div>
+
