@@ -81,6 +81,40 @@
 </div>
 
 <app-remaining-players></app-remaining-players>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-3" *ngFor="let team of ds.teamList;">
+      <div class="heading-team">
+        <div class="team-info">
+          <a routerLink="/teams" >{{team.name}}</a>
+        </div>
+        <!-- <button (onclick)="updatediv()">hide</button> -->
+      </div>
+
+      <div class="row">
+        <div class="col-sm-5">
+          <img src="{{team.imageUrl}}" alt="" class="img-fluid mx-auto d-block">
+        </div>
+        <div class="col-sm-7" style="padding-left:0">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td scope="row">Rem Amt</td>
+                <td> {{team.remainingAmount}}</td>
+              </tr>
+              <tr>
+                <td scope="row">Res Amt</td>
+                <td> {{team.reservedAmount}}</td>
+              </tr>
+              <tr>
+                <td scope="row">NextBD Amt</td>
+                <td> {{team.nextBidMaxAmount}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
 
-<app-teams></app-teams>
+<!-- <app-teams></app-teams> -->

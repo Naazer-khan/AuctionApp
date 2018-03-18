@@ -9,6 +9,9 @@ export class CommunicationServiceService {
   public currentPlayerToBidOn = new Subject<any>();
   public playersPopulated = new Subject<any>();
   public auctionCompleted = new Subject<any>();
+  public allplayersLoaded = new Subject<any>();
+  public currentTeamLoaded = new Subject<any>();
+
   
   constructor() { }
 
@@ -29,6 +32,16 @@ export class CommunicationServiceService {
   setMessageToAuctionComplete(): any {
     this.auctionCompleted.next(1);
   }
+
+  setMessageToAllplayersLoaded(data = 234): any{
+    this.allplayersLoaded.next(data);
+  }
+
+  setMessageToCurrentTeamLoaded(){
+    console.log("comm service  currentTeam Loaded.");
+    this.currentTeamLoaded.next(1);
+  }
     
+
 
 }

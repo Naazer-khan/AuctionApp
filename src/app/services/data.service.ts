@@ -9,6 +9,7 @@ import { CommunicationServiceService } from './communication-service.service';
 @Injectable()
 export class DataService {
 
+  clientName: string = "/development";
   isAuctionComplete: boolean = false;
   setAuctionCompleted(): any {
     this.isAuctionComplete = true;
@@ -24,6 +25,14 @@ export class DataService {
   playerList: Player[];
   unsoldPlayerList: Player[];
 
+  
+  miniTeamDisplay: boolean=true;
+
+  loadAllClient() {
+    //    /Clients
+    // then set clientName as the name of that client
+  }
+
   constructor(private fb: AngularFireDatabase
       ,private commService: CommunicationServiceService) {
     //   this.teamList = this.fb.list('/teams');
@@ -38,6 +47,7 @@ export class DataService {
       });
       Team.counter = item.length;
       console.log("Team counter is set to : " + Team.counter);
+      this.commService.setMessageToCurrentTeamLoaded();
     });
 
     this.auctionSettings = this.getAuctionSettings();
@@ -62,66 +72,14 @@ export class DataService {
       Player.counter = item.length;
       console.log("Player counter is set to : " + Player.counter)
       this.commService.sendMessageToUpdateCurrentPlayer();
+      this.commService.setMessageToAllplayersLoaded();
 
     });
 
   }
 
-  /*
-  getUnsoldPlayerFromDB() : Player[] {
-    var p = this.getCandidateRef();
-    p.snapshotChanges().subscribe(item => {
-      this.unsoldPlayerList = [];
-      item.forEach(element => {
-         var y = element.payload.toJSON();
-         y["$key"] = element.key;
-         if(y["isSold"] == false) {
-           this.unsoldPlayerList.push(y as Player)
-         }
-      });
-    });
-*/
-    /*
-  ).once('value').then(
-
-      (snapshot) => {
-
-        this.playerListToGetUnsoldPlayers = [];
-        snapshot.forEach(element => {
-          var z = element.toJSON();
-          z["$key"] = element.key;
-          console.log("individual player " + JSON.stringify(z) + " " + element.key);
-          this.playerListToGetUnsoldPlayers.push(z as Player);
-        });
-        //console.log("promise " + JSON.stringify(snapshot));
-        //console.log("promise2 " + JSON.stringify(snapshot.val()));
-      });/
-     return this.unsoldPlayerList;    
-  }*/
-
-
-  // getTeamsFromDatabase00() {
-
-  //   this.fb.database.ref('/teams').once('value').then(
-
-  //     (snapshot) => {
-
-  //       this.teamList = [];
-  //       snapshot.forEach(element => {
-  //         var z = element.toJSON();
-  //         z["$key"] = element.key;
-  //         console.log("individual " + JSON.stringify(z) + " " + element.key);
-  //         this.teamList.push(z as Team);
-  //       });
-  //       //console.log("promise " + JSON.stringify(snapshot));
-  //       //console.log("promise2 " + JSON.stringify(snapshot.val()));
-  //     });
-
-  //   //    return teamList;    
-  // }
-
   getCandidateRef() {
-    this.playerRef = this.fb.list('players');
+    this.playerRef = this.fb.list(this.clientName+'/players');
     return this.playerRef;
   }
 
@@ -130,7 +88,7 @@ export class DataService {
   getTeamRef() {
     //return this.getTeamsFromDatabase();
 
-    this.teamRef = this.fb.list('/teams');
+    this.teamRef = this.fb.list(this.clientName+'/teams');
     return this.teamRef;
   }
 

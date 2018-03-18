@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   msg: Message;
 
   ngOnInit() {
-    
+    this.ds.miniTeamDisplay = true
     var x = this.ds.getCandidateRef(); 
     this.communicationService.currentPlayerToBidOn.subscribe(
       data => {
@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
    this.communicationService.auctionCompleted.subscribe(
      data => {
       this.setMessageToAuctionComplete();
+      
      }
    )
   }
