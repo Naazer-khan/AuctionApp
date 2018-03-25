@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+//declare let ClientIP: any;
 
 @Component({
   selector: 'app-remaining-players',
@@ -8,7 +9,9 @@ import { DataService } from '../services/data.service';
 })
 export class RemainingPlayersComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(public dataService: DataService) {
+    //this.dataService.updateIP(ClientIP);
+   }
 
   ngOnInit() { }
 

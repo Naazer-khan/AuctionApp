@@ -1,0 +1,168 @@
+<div class="container">
+
+  <form class="form-horizontal"   #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
+    <div *ngIf='isShowHide'>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <h2>Login</h2>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+            <span class="text-danger align-middle">
+              
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="email">E-Mail Address</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem">
+                <i class="fa fa-at"></i>
+              </div>
+              <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required autofocus>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+            <span class="text-danger align-middle">
+             
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group has-danger">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem">
+                <i class="fa fa-key"></i>
+              </div>
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-user-plus"></i> Sign in</button>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success" (click)="sigup()">
+            <i class="fa fa-user-plus"></i>Goto Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <form class="form-horizontal" #signUpForm="ngForm"  (ngSubmit)="onsubmit(signUpForm)" >
+    <div *ngIf='!isShowHide'>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <h2>Sign Up</h2>
+          <hr>
+        </div>s
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="name">Series Name</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem">
+                <i class="fa fa-user"></i>
+              </div>
+              <input type="text" name="name" class="form-control"#name="ngModel" [(ngModel)]="ds.selectedClient.name"
+                placeholder="Name" required autofocus>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+            <span class="text-danger align-middle">
+              
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label>User Name</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem">
+                <i class="fa fa-at"></i>
+              </div>
+              <input type="text" class="form-control" name="adminUser" #name="ngModel" [(ngModel)]="ds.selectedClient.adminUser" placeholder="Enter User Name" required autofocus>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-control-feedback">
+            <span class="text-danger align-middle">
+            
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 field-label-responsive">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group has-danger">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" style="width: 2.6rem">
+                <i class="fa fa-key"></i>
+              </div>
+              <input type="password" name="adminPassword" class="form-control" #name="ngModel" [(ngModel)]="ds.selectedClient.adminPassword" placeholder="Password" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-user-plus"></i> Sign Up</button>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success" (click)="login()">
+            <i class="fa fa-user-plus"></i> Sign in</button>
+        </div>
+      </div>
+    </div>
+  </form> 
+  <!-- <form #signUpForm="ngForm" (ngSubmit)="onsubmit(signUpForm)">
+    
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="ds.selectedClient.name" />
+  </div> 
+  <div class="form-group">   
+    <button class="btn btn-default" type="submit">
+        <i class="fa fa-floppy-o"></i>
+         Submit</button> 
+   </div>
+
+</form> -->
+</div>

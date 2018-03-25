@@ -1,73 +1,98 @@
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-      <h2>Player Register</h2>
-  <form #playerForm="ngForm" (ngSubmit)="onSubmit(playerForm)">
-      <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="dataService.selectedPlayer.$key">
-    <div class="form-group">
-      <label>Name</label>
-      <input class="form-control" name="name" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.name" placeholder="Name" required>
-        <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)"
+      <h4>Player Register</h4>
+      <form #playerForm="ngForm" (ngSubmit)="onSubmit(playerForm)">
+        <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="this.ds.selectedPlayer.$key">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" name="name" #name="ngModel" [(ngModel)]="this.ds.selectedPlayer.name" placeholder="Name"
+            required>
+          <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)"
       class="alert alert-danger"> -->
+        </div>
+        <div class="form-group">
+          <label>Batting Style</label>
+          <!-- <input class="form-control" name="batting" #name="ngModel" [(ngModel)]="ds.selectedPlayer.batting" placeholder="Batting Style" > -->
+          <select class="select-options" name="batting" #name="ngModel" [(ngModel)]="ds.selectedPlayer.batting">
+            <option value="left hand bat">Left Handed Bat</option>
+            <option value="right hand bat">Right Handed Bat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Bowling Style</label>
+          <!-- <input class="form-control" name="bowling" #name="ngModel" [(ngModel)]="ds.selectedPlayer.bowling" placeholder="Bowling Style" > -->
+          <select class="select-options" name="bowling" #name="ngModel" [(ngModel)]="ds.selectedPlayer.bowling" placeholder="Bowling Style">
+            <option value="left arm">Left-arm</option>
+            <option value="right arm">Right-arm</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <!-- <input class="form-control" name="role" #name="ngModel" [(ngModel)]="ds.selectedPlayer.role" placeholder="Role" > -->
+          <select class="select-options" name="role" #name="ngModel" 
+              [(ngModel)]="ds.selectedPlayer.role" placeholder="Bowling Style">
+            <!-- <option value="" disabled selected>Please Choose...</option> -->
+            <option [ngValue]="ds.selectedPlayer.role"  value="batman">Batsman</option>
+            <option value="bowler">Bowler</option>
+            <option value="allrounder">All Rounder</option>
+            <option value="wicketkeeper">Wicket Keeper</option>
+          </select>
+        </div>
+        <!-- <div class="form-group">
+          <label>Runs</label>
+          <input class="form-control" name="run" #name="ngModel" [(ngModel)]="ds.selectedPlayer.run" placeholder="Runs">
+        </div>
+        <div class="form-group">
+          <label>Wicket</label>
+          <input class="form-control" name="wicket" #name="ngModel" [(ngModel)]="ds.selectedPlayer.wicket" placeholder="Wickets">
+        </div> -->
+        <div class="form-group">
+          <button class="btn btn-default" type="submit" [disabled]="!(ds.isAdmin && playerForm.valid)">
+            <i class="fa fa-floppy-o"></i>
+            Submit</button>
+        </div>
+      </form>
     </div>
-    <div class="form-group">
-      <label>Batting Style</label>
-      <input class="form-control" name="batting" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.batting" placeholder="Batting Style" required>
-    </div>
-    <div class="form-group">
-      <label>Bowling Style</label>
-      <input class="form-control" name="bowling" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.bowling" placeholder="Bowling Style" required>
-    </div>
-    <div class="form-group">
-      <label>Role</label>
-      <input class="form-control" name="role" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.role" placeholder="Role" required>
-    </div>
-    <div class="form-group">
-      <label>Runs</label>
-      <input class="form-control" name="run" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.run" placeholder="Runs" required>
-    </div>
-    <div class="form-group">
-      <label>Wicket</label>
-      <input class="form-control" name="wicket" #name="ngModel" [(ngModel)]="dataService.selectedPlayer.wicket" placeholder="Wickets" required>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-default" type="submit" [disabled]="!playerForm.valid">
-        <i class="fa fa-floppy-o"></i>
-         Submit</button>
-         </div>
-    </form>
-  </div>
     <div class="col-md-5">
-      
-        <h6 class="text-center">Player Display</h6><br/>
-        <table class="table table-sm table-hover">
-          <thead>
+
+      <h4 class="text-center">Player Display</h4>
+      <br/>
+      <table class="table table-sm table-hover table-bordered">
+        <thead>
+          <tr class="table-dark">
             <th>Id</th>
-            <th>Name</th>
-            <th>Runs</th>
-            <th>Wickets</th>
-            <th>Update</th>
-            <th>Delete</th>
-            
-          </thead>
-          <tr *ngFor="let player of dataService.playerList">
-              <td>{{player.pid + 1}}</td>
-              <td>{{player.name}}</td>
-              <td>{{player.run}}</td>
-              <td>{{player.wicket}}</td>
-              <td>
-                <a class="btn" (click)="onEdit(player)">
-                  <i class="fa fa-pencil-square-o"></i>
-                </a>
-              </td>
-              <td>
-                  <a class="btn" (click)="onDelete(player.$key)">
-                      <i class="fa fa-trash-o"></i>
-                    </a>
-              </td>
+          <th>Name</th>
+          <th>Runs</th>
+          <th>Wickets</th>
+          <th>Update</th>
+          <th>Delete</th>
           </tr>
-        </table>
-        
+          
+
+        </thead>
+        <tr *ngFor="let player of this.ds.playerList  | paginate: { itemsPerPage: 10, currentPage: p }">
+          <td>{{player.pid}}</td>
+          <td>{{player.name}}</td>
+          <td>{{player.run}}</td>
+          <td>{{player.wicket}}</td>
+          <td>
+            <a class="btn" (click)="onEdit(player)">
+              <i class="fa fa-pencil-square-o"></i>
+            </a>
+          </td>
+          <td>
+            <button class="btn" [disabled] = "!ds.isAdmin" (click)="onDelete(player.$key)">
+            <!-- <a class="btn" [disabled] = "!ds.isAdmin" (click)="onDelete(player.$key)"></a> -->
+              <i class="fa fa-trash-o"></i>
+            </button>
+            
+          </td>
+        </tr>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
 
     </div>
   </div>

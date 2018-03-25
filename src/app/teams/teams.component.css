@@ -1,9 +1,9 @@
 .heading-team{
     background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
-    margin-bottom: 15px;
+    margin-bottom: 0    px;
     padding: 1px;
     font-size: 2rem;
-    box-shadow: 3px 4px 18px 0px;
+    /* box-shadow: 3px 4px 18px 0px; */
     margin-top: 7px;
     
 }

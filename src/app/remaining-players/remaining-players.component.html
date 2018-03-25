@@ -1,5 +1,3 @@
-
-
 <div class="player-remaining">
   <h2>
 
@@ -10,13 +8,14 @@
 
     <ng-template #DisplayMessage>All players sold!</ng-template>
 
-    </h2>
+  </h2>
 </div>
 
 <div class="container-fluid" *ngIf="!dataService.isAuctionComplete">
-  <marquee class="text-center re-back">
-  <span class="remaining-player" *ngFor="let player of dataService.unsoldPlayerList;">
-    <p> {{player.name |uppercase| truncate : 2 : '' }} </p>
-  </span>
-</marquee></div>
-
+  <div class=" re-back">
+    <div class="remaining-player" *ngFor="let player of dataService.unsoldPlayerList">
+      <!-- <p> {{player.name |uppercase| truncate : 2 : '' }} </p> -->
+      <p><span class="list-number"> </span>{{player.name | titlecase | words : 1 : ' ' }} </p>
+    </div>
+  </div>
+</div>

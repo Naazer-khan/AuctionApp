@@ -12,6 +12,6 @@ export const environment = {
     projectId: "test-28ffe",
     storageBucket: "test-28ffe.appspot.com",
     messagingSenderId: "265546353050"
-  }
-  
+  },
+  baseDBName: "demo",
 };

@@ -5,12 +5,14 @@
     width: 100%;
     box-shadow: inset 2px 2px 20px 2px;
 }
-
-.row-margin {
-    margin-left: 0;
-    margin-right: 0;
+.col-btn{
+    margin-top: 1rem;
 }
-
+/* .row-margin {
+    padding-left: 0px;
+    padding-right: 0px;
+} */
+ 
 /*  start bedding palyer Information */
 
 .bidding {
@@ -40,9 +42,9 @@
 }
 
 .player-img>img {
-    width: 8rem;
+    
     border: 2px solid black;
-    border-radius: 40px 1px 40px 0px;
+    border-radius: 20px 1px 20px 0px;
 }
 
 .career {
@@ -106,10 +108,11 @@
 
 .pname {
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
     width: 100%;
     overflow: hidden;
+    color: #0085ff;
 }
 
 .pname:hover {
@@ -131,8 +134,10 @@
     font-weight: 400;
     font-size: 1.2rem;
     outline: none;
-    margin: 3px 0 10px;
-    width: 86%
+    /* margin: 3px 0 10px; */
+    width: 86%;
+    margin: 0 auto;
+    display: block;
 }
 
 .biddin-amount {
@@ -144,52 +149,58 @@
 /* ===================== */
 
 /* ++++++++++++++++++++++++++++++ */
-
-.radio-one {
-    /* display: block;    
-      cursor: pointer;   
-      font-size: 1rem; */
-    display: inline-grid;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1.6rem;
-}
-
-[type="radio"] {
-    border: 0;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
     position: absolute;
-    width: 1px;
+    left: -9999px;
 }
-
-[type="radio"]:before {
-    content: '';
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 0px;
+    cursor: pointer;
+    line-height: 20px;
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.25em;
-    border-radius: 1em;
-    /*hard border*/
-    border: 0.125em solid #fff;
-    box-shadow: 0 0 0 0.15em #000;
-    /*light shadow*/
-    margin-right: 0.75em;
-    transition: 0.5s ease all;
-    /*animation here*/
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid #12c900;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 
-[type="radio"]:checked:before {
-    background: #33a2c6;
-    box-shadow: 0 0 0 0.25em #000;
-}
-
-.notify{
-     
-   
-}
+/* ================================================ */
 .alert p{
     position: relative;
     padding: 0rem 1.25rem;
@@ -202,6 +213,14 @@
     border-color: transparent;
 }
 
+@media (max-width:768px){
+    .img-fluid{
+        width: 50%
+    }
+    .status-message[_ngcontent-c1] p[_ngcontent-c1]{
+        font-size: 1rem;
+    }
+}
 @media (min-width: 768px) {
     .selectbtn .nextPlayer {
         right: 50px;
@@ -209,6 +228,7 @@
     .selectbtn .sold {
         left: 50px;
     }
+    
 }
 
 @media (min-width: 576px) and (max-width:1125px) {
@@ -266,24 +286,22 @@
 /* mini team Components css */
 .heading-team{
     background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
-    margin-bottom: 15px;
-    padding: 1px;
-    font-size: 2rem;
+    margin: -2px -2px 15px -2px;
     box-shadow: 3px 4px 18px 0px;
-    margin-top: 7px;
-    
 }
  
 .team-info{
     text-align: center;
     /* border: 1px solid; */
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color:white;
 }
 
 .team-info a {
     color: white;
+    display: block;
+    text-decoration: none;
 }
 
 .table td{
@@ -294,3 +312,15 @@
 .table-bordered td, .table-bordered th{
     border: 1px solid  #26bbb6;
 }
+
+.playerBought{
+    font-weight: 600;
+font-size: 1.2rem;
+text-align: center; 
+}
+.team-pad{
+    border: 2px solid aquamarine;
+    margin: 3px;
+    box-shadow: 0px 0px 7px -1px;
+}
+ 

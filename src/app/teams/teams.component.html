@@ -1,3 +1,4 @@
+<app-header></app-header>
 <!-- <div class="heading-team">
   <h2>
     teams works
@@ -11,27 +12,33 @@
 <!-- <button (click)="printTeams()" name="Print teams">Print teamss</button> -->
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row ">
     <div class="col-md-3" *ngFor="let team of teams;">
 
       <div class="heading-team">
         <div class="team-info">
-          <a > {{team.name}}</a>
+          <a > {{team.name}}</a><br/>
+          <!-- <a (click)="resetTeamData(team.tid)"> ResetTeam</a> -->
+         
         </div>
         <!-- <button (onclick)="updatediv()">hide</button> -->
       </div>
-      <div class="col-sm-5">
-        <table class="table table-sm table-hover">
-          <thead>
-            <th>Name</th>
-            <th>Amt</th>
+      <div class="row">
+      <div class="col">
+        <table class="table table-hover table-bordered">
+          <thead class="text-center">
+            <th>Player Name</th>
+            <th>Sold Amount</th>
+           
           </thead>
           <tr *ngFor="let p of team.players">
             <!-- <td> {{p | json}} </td> -->
             <td> {{p.name}}</td>
             <td>{{p.biddingAmount}}</td>
+          
           </tr>
         </table>
       </div>
+    </div>
     </div>
   </div>

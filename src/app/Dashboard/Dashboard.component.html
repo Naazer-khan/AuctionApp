@@ -1,120 +1,154 @@
-<div class="status-message" >
-  <div class="text-center" >
+<app-header></app-header>
+<div class="status-message">
+  <div class="text-center">
     <p [ngClass]="(msg.type=='info')?'status-message-green':'status-message-red'">{{msg.message}}</p>
   </div>
 </div>
- 
-<div class="row row-margin ">
-  <div class=" col-md-2 row-margin "></div>
-  <div class=" col-md-4 col-sm-6 ">
-   
-    <div class="bidding equal">
-      <div class="bidding-form text-center">
-        <label for="" class="biddin-amount">Bidding Amount </label>
-        <input [(ngModel)]="biddingAmount" id="teamName">
 
+<div class="container-fluid">
+  <div class="row  ">
+    <div class=" col-md-6 row-margin">
+      <div class="row" *ngIf="hide">
+        <div class="col-md-2"></div>
+        <div class=" col-md-8  ">
+          <div class="formCard equal">
+            <div class="playerInfo">
+              <div class="pname text-center">{{currentPlayer.name}}</div>
+              <!-- <div class="row align-items-center">
+                <div class="col-lg-4" style="padding-right:0">
+                  <img src="{{currentPlayer.imageUrl}}" class="rounded m-auto d-block" alt="">
+                  <div class="player-img text-center">
+                    <img src="assets/images/ds.png" class="img-fluid" alt="">
+                   
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="details">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td scope="row">Role </td>
+                          <td>{{currentPlayer.role}} </td>
+                        </tr>
+                        <tr>
+                          <td scope="row">Batting Style </td>
+                          <td>{{currentPlayer.batting}} </td>
+                        </tr>
+                        <tr>
+                          <td scope="row">Bowling Style </td>
+                          <td>{{currentPlayer.bowling}} </td>
+                        </tr>
+                        <tr>
+                          <td scope="row">Runs </td>
+                          <td>{{currentPlayer.run}} </td>
+                        </tr>
+                        <tr>
+                          <td scope="row">Wickets </td>
+                          <td>{{currentPlayer.wicket}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-        <br>
-        <div *ngFor="let team of ds.teamList; let idx = index" class="radio-one">
-          <input type="radio" name="radiogroup" (change)="onSelectionChange(team)" [value]="team.id"> &emsp;&emsp;{{team.name}} [{{team.nextBidMaxAmount}}]
-        </div>
-      </div>
-      
-      <div class="selectbtn">
-        <span *ngIf="playerAvailable">
-          <button type="button" (click)="performTransaction(biddingAmount)" class="btn btn-outline-secondary sold">Sell</button>
-        </span>
-        <button type="button" (click)="getNextCandidate()" class="btn btn-outline-secondary nextPlayer">Next Player</button>
-      </div>
-
-    </div>
-  </div>
-  <div class=" col-md-4 col-sm-6 ">
-    <div class="formCard equal">
-      <div class="playerInfo">
-        <div class="row align-items-center">
-          <div class="col-xl-4" style="padding-right:0">
-
-            <!-- <img src="{{currentPlayer.imageUrl}}" class="rounded m-auto d-block" alt=""> -->
-            <div class="player-img text-center">
-              <img src="assets/images/placeholder.jpg" class="mx-auto d-block" alt="">
-              <div class="pname">{{currentPlayer.name}}</div>
-
-            </div>
-
-          </div>
-          <div class="col-xl-8">
-            <div class="details">
-              <table class="table table-bordered">
-                <tbody>
-                  <tr>
-                    <td scope="row">Role </td>
-                    <td>Batsman </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Batting Style </td>
-                    <td>Right Handed Bat </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Bowling Style </td>
-                    <td>Right-arm offbreak </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Runs </td>
-                    <td>2000 </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">Wickets </td>
-                    <td>15</td>
-                  </tr>
-                </tbody>
-              </table>
-              
+                  </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
+        <div class="col-md-2"></div>
+      </div>
+
+      <div class="row" *ngIf="hide">
+        <div class="col-md-2"></div>
+        <div class=" col-md-8 col-btn">
+          <div class="bidding equal" >
+            <div class="bidding-form" >
+              <label for="" class="biddin-amount text-center">Bidding Amount </label>
+              <input [disabled]="!(ds.auctionStatus =='Started' &&  ds.isAdmin)" [(ngModel)]="biddingAmount" id="teamName">
+              <br>
+              <div class="row text-center ">
+                <div *ngFor="let team of ds.teamList; let idx = index" class="col-sm-6 radio-one">
+                  <input id="team-{{idx}}" [disabled]="!(ds.auctionStatus =='Started' &&  ds.isAdmin)" type="radio" name="radiogroup" (change)="onSelectionChange(team)" [value]="team.id">
+                  <label for="team-{{idx}}">&emsp;&emsp;{{team.name}} [{{team.nextBidMaxAmount}}]</label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="selectbtn">
+              <!-- *ngIf="playerAvailable" -->
+              <span >
+                <button type="button" [disabled]="!(ds.auctionStatus =='Started' &&  ds.isAdmin)" (click)="performTransaction(biddingAmount)" 
+                class="btn btn-outline-secondary sold">Sell</button>
+              </span>
+              <button type="button"  (click)="getNextCandidate()" class="btn btn-outline-secondary nextPlayer">Next Player</button>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+
+      <div class="row" *ngIf="!hide">
+        <p>All stats.</p>
       </div>
     </div>
-  </div>
-  <div class=" col-md-2 row-margin "></div>
 
+    <div class=" col-md-6  ">
+
+      <div class="row">
+        <div class="col-lg-6" *ngFor="let team of ds.teamList;">
+          <div class="team-pad">
+            <div class="heading-team">
+              <div class="team-info">
+                <a href="/teams">{{team.name}} </a>
+              </div>
+              <!-- <button (onclick)="updatediv()">hide</button> -->
+            </div>
+
+            <div class="row">
+              <div class="col-sm-5">
+                <!-- <img src="assets/images/team{{team.tid%4}}.jpg" alt="" class="img-fluid mx-auto d-block"> -->
+                <img src="assets/images/teamLogo/team{{team.tid%4}}.png" alt="" class="img-fluid mx-auto d-block">
+              </div>
+              <div class="col-sm-7">
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td scope="row">Rem Amt</td>
+                      <td> {{team.remainingAmount}}</td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Res Amt</td>
+                      <td> {{team.reservedAmount}}</td>
+                    </tr>
+                    <tr>
+                      <td scope="row">NextBid Amt</td>
+                      <td> {{team.nextBidMaxAmount}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+            <div>
+              <div class="playerBought">Number Of Players Bought
+                <span>{{team.numberOfPlayersBought}}</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <app-remaining-players></app-remaining-players>
-<div class="container-fluid">
-<div class="row">
-    <div class="col" *ngFor="let team of ds.teamList;">
-      <div class="heading-team">
-        <div class="team-info">
-          <a href="/teams" >{{team.name}} </a>
-        </div>
-        <!-- <button (onclick)="updatediv()">hide</button> -->
-      </div>
 
-      <div class="row">
-        <div class="col-sm-5">
-          <img src="assets/images/team{{team.tid%4}}.jpg" alt="" class="img-fluid mx-auto d-block">
-        </div>
-        <div class="col-sm-7" style="padding-left:0">
-          <table class="table table-bordered">
-            <tbody>
-              <tr>
-                <td scope="row">Rem Amt</td>
-                <td> {{team.remainingAmount}}</td>
-              </tr>
-              <tr>
-                <td scope="row">Res Amt</td>
-                <td> {{team.reservedAmount}}</td>
-              </tr>
-              <tr>
-                <td scope="row">NextBD Amt</td>
-                <td> {{team.nextBidMaxAmount}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
 
 
 <!-- <app-teams></app-teams> -->

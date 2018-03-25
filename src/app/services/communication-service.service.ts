@@ -11,9 +11,15 @@ export class CommunicationServiceService {
   public auctionCompleted = new Subject<any>();
   public allplayersLoaded = new Subject<any>();
   public currentTeamLoaded = new Subject<any>();
+  public clientSetinDb = new Subject<any>();
+  public auctionStarted = new Subject<any>();
 
   
   constructor() { }
+
+  sendMessageToAuctionStarted(){
+    this.auctionStarted.next(1);
+  }
 
   sendMessageToUpdateUnsoldPlayers() {
     console.log("Updating unsold players");
@@ -41,7 +47,10 @@ export class CommunicationServiceService {
     console.log("comm service  currentTeam Loaded.");
     this.currentTeamLoaded.next(1);
   }
-    
 
+  setMessageToCurrentClient(){
+    this.clientSetinDb.next(1);
+  }
+    
 
 }

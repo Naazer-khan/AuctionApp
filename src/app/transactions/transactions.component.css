@@ -1,0 +1,22 @@
+.table-dark, .table-dark > td, .table-dark > th{
+    background-color: #21d0ac;
+}
+.table-bordered td, .table-bordered th{
+    border: 1px solid #12ddbe;
+}
+.table-bordered th{
+    text-align: center;
+}
+.ion-refresh{
+    font-size: 1.5rem;
+}
+thead tr th,tbody{
+    text-align: center;box-shadow: -1px 1px 7px 0px;
+}
+.table td{
+    padding: 0rem;
+    vertical-align: middle;
+}
+thead{
+    box-shadow: -1px 1px 7px 0px;
+}

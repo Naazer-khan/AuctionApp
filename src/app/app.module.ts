@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+// import { SweetAlertService } from 'angular-sweetalert-service';
+import {HttpClientModule} from '@angular/common/http';
 
 import { TruncateModule } from 'ng2-truncate';
 
@@ -21,6 +24,13 @@ import { CommunicationServiceService } from './services/communication-service.se
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuctionSettingComponent } from './auction-setting/auction-setting.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +39,14 @@ import { AppRoutingModule } from './app-routing.module';
     RemainingPlayersComponent,
     TeamsComponent,
     TeamManagementComponent,
-    PlayerManagementComponent
+    PlayerManagementComponent,
+    AuthenticationComponent,
+    AuctionSettingComponent,
+    TransactionsComponent,
+    HomeComponent,
+    HeaderComponent,
+    AdminLoginComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -37,9 +54,11 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AppRoutingModule,
-    TruncateModule
+    TruncateModule,
+    NgxPaginationModule,
+    HttpClientModule
   ],
-  providers: [CommunicationServiceService, DataService],
+  providers: [CommunicationServiceService, DataService],//SweetAlertService
   bootstrap: [AppComponent]
 })
 export class AppModule { }

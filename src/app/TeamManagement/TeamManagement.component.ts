@@ -4,6 +4,8 @@ import { AngularFireList } from 'angularfire2/database';
 import { Team } from '../model/team';
 import { NgForm } from '@angular/forms';
 
+//declare let ClientIP: any;
+
 @Component({
   selector: 'app-team-management',
   templateUrl: './TeamManagement.component.html',
@@ -15,7 +17,9 @@ export class TeamManagementComponent implements OnInit {
   newTeam: Team = new Team();
   
   
-  constructor(private dataService: DataService) { }
+  constructor(public dataService: DataService) {
+    //this.dataService.updateIP(ClientIP);
+   }
 
   ngOnInit() {
     console.log("team - " + JSON.stringify(this.newTeam));

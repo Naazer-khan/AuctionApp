@@ -1,49 +1,77 @@
-.row-margin {
+/* .row-margin {
     margin-left: 0;
     margin-right: 0;
-}
+} */
 
 .remaining-player {
-    font-size: 1.3rem;
-    border: 3px solid;
-    border-radius: 50%;
-    text-align: center;
-    margin: 2px 10px;
-    padding: 0.7em 0.9em;
-    display: inline-block;
-    background-size: cover;
-    box-shadow: inset 2px 2px 20px 2px;
+  border: 1px solid;
+  margin: 2px 6px;
+  padding: 0em 0.3em;
+  display: inline-block;
+  background-size: cover;
+  box-shadow: 0px 0px 2px 0px;
+  font-weight: 300;
+  border-radius: 6%;
+  height: 2rem;
+  width: 13rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* .remaining-player {
+  margin: 2px 6px;
+  padding: 0em 0.3em;
+  display: inline-block;
+  background-size: cover;
+
+  font-weight: 300;
+  border-radius: 6%;
+  border: 2px solid;
+  border-radius: 41%;
+  
+} */
+
 .remaining-player p {
-    margin-bottom: 0px;
-    color: black;
+  margin-bottom: 0px;
+  color: black;
+  font-size: 1.1rem;
+  padding: 0.3rem 1rem;
+  /* text-align: center; */
 }
 
 .player-remaining {
-    background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
-     margin-bottom: 15px;
-    padding: 1px;
-    font-size: 2rem;
-    box-shadow: 3px 4px 18px 0px;
-    margin-top: 7px;
+  background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+  margin-bottom: 15px;
+  padding: 1px;
+  font-size: 2rem;
+  box-shadow: 3px 4px 18px 0px;
+  margin-top: 7px;
 }
 
 .player-remaining h2 {
-    text-align: center;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 1px;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 1px;
 }
 
 .re-back {
-    border: 1px solid #26bbb6;
-    border-radius: 13px;
-    color: #26bbb6;
-    box-shadow: inset 2px 2px 5px 2px;
+  padding: 5px;
+  color: #26bbb6;
+  /* box-shadow: inset 1px 0px 6px 2px; */
+  box-shadow: 1px 0px 10px 0px;
+}
+
+.list-number {
+  padding: 0px 5px 1px 8px;
+  background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+  border-radius: 50%;
+  margin: 2px;
+  font-size: 0.9rem;
 }
 
 /*animation====*/
 
 /*===animation*/
+

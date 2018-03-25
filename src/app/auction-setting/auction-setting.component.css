@@ -1,0 +1,49 @@
+.style{
+    margin-top: 1rem;
+
+color: #27b2ba;
+}
+
+.btn-primary {
+  background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+  padding: .2rem .5rem;
+  float: right;
+  margin-top: 7px;
+}
+.btn-danger{
+    background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+    
+    border-color: #1312b5;
+}
+.btn-danger:hover{
+    background-color: #dc3545;
+}
+.inside-padding {
+  padding: 10px;
+  border: 1px solid #27b2ba;
+}
+.reset-btn{
+    padding: 10px;
+    border: 1px solid #27b2ba;
+    margin-top: 1rem;
+    box-shadow: inset 0px 1px 8px 0px;
+}
+/* .reset-text{
+    display: ruby-text-container;
+} */
+.table td,
+.table th {
+  /* border:none; */
+  vertical-align: middle;
+}
+
+.inputstyle {
+  border-radius: 3px;
+  border-color: #1fdba7;
+  margin-top: 10px;
+}
+
+.resetBtn {
+  float: right;
+}
+

@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container">
+  <div class="table-responsive-md">
+    <table class="table table-bordered table-hover" style="margin-top: 1rem;">
+
+      <thead>
+        <tr class="table-dark">
+          <th>Transactions Id</th>
+          <th>Name</th>
+          <th>Team Id</th>
+          <th>Sold Amount(€)</th>
+          <th>Time Of Bid</th>
+          <th>Undo</th>
+        </tr>
+      </thead>
+      <tbody>
+          <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+        <tr *ngFor="let transaction of ds.bookList ">
+          <td>{{transaction.transactionId + 1}}</td>
+          <!-- <td>{{ds.playerList[book.playerId].name}}</td> -->
+          <td>{{transaction.playerName}}</td>
+          <td>{{transaction.teamName}}</td>
+          <td>{{transaction.playerSoldAt}}</td>
+          <td>{{transaction.time | date:'short'}}</td>
+          <td >
+
+            <!-- <a *ngIf="transaction.deleted==false" class="btn" (click)="revertTransaction(transaction)">
+              <i class="ion-reply"></i>
+            </a> -->
+            <button *ngIf="transaction.deleted==false" class="btn" [disabled] = "!ds.isAdmin"
+             (click)="revertTransaction(transaction)">
+              <i class="ion-reply"></i></button>
+          </td>
+        </tr>
+        
+      </tbody>
+      
+    </table> 
+  </div>
+  <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+  <!-- <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav> -->
+</div>

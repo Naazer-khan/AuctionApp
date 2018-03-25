@@ -1,0 +1,269 @@
+<app-header></app-header>
+<div class="container">
+  <!-- <table class="table table-bordered table-sm">
+    <tbody>
+      <tr>
+        <td>
+          <span>Auction Currency</span>
+        </td>
+        <td class="text-center">
+          <span>{{ds.selectedauctionSetting.AuctionCurrency}}</span>
+        </td>
+        <td>
+          <input class="inputstyle" name="AuctionCurrency" #ccy> </td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSettingsString('AuctionCurrency', ccy)">
+            Update
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class=" ">Auction Status</span>
+        </td>
+        <td class="text-center">
+          <span class=" ">{{ds.selectedauctionSetting.AuctionStatus}}</span>
+        </td>
+        <td>
+          <input class="inputstyle" name="AuctionStatus" #AuctionStatus> </td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSettingsString('AuctionStatus', AuctionStatus)">
+            Update
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class=" ">Initial Amount PerTeam</span>
+        </td>
+        <td class="text-center">
+          <span>{{ds.selectedauctionSetting.InitialAmountPerTeam}}</span>
+        </td>
+        <td>
+          <input class="inputstyle text-center" name="InitialAmountPerTeam" #InitialAmountPerTeam> </td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSettingsNumber('InitialAmountPerTeam', InitialAmountPerTeam)">
+            Update
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class=" ">Minimum Bid Amount</span>
+        </td>
+        <td class="text-center">
+          <span class=" ">{{ds.selectedauctionSetting.MinimumBidAmount}}</span>
+        </td>
+        <td>
+          <input class="inputstyle text-center" name="MinimumBidAmount" #MinimumBidAmount> </td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSettingsNumber('MinimumBidAmount', MinimumBidAmount)">
+            Update
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class=" ">Number Of Players PerTeam</span>
+        </td>
+        <td class="text-center">
+          <span class=" ">{{ds.selectedauctionSetting.NumberOfPlayersPerTeam}}</span>
+        </td>
+        <td>
+          <input class="inputstyle text-center" name="NumberOfPlayersPerTeam" #NumberOfPlayersPerTeam> </td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSettingsNumber('NumberOfPlayersPerTeam', NumberOfPlayersPerTeam)">
+            Update
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class=" ">Per TeamSafety BidAmount Multiplier</span>
+        </td>
+        <td class="text-center text-center">
+          <span class=" ">{{ds.selectedauctionSetting.PerTeamSafetyBidAmountMultiplier}}</span>
+        </td>
+        <td>
+          <input class="inputstyle text-center" name="PerTeamSafetyBidAmountMultiplier" #PerTeamSafetyBidAmountMultiplier> </td>
+        <td>
+          <button class="btn btn-primary" (click)="updateSettingsNumber('PerTeamSafetyBidAmountMultiplier', PerTeamSafetyBidAmountMultiplier)">
+            Update
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+
+
+
+  <div class="row">
+
+    <div class="col-md-8 style"  >
+      <div class="row">
+        <div class="col-md-6 inside-padding">
+          <div class="row">
+            <div class="col ">
+              <span>Auction Currency</span>
+            </div>
+            <div class="col text-center">
+              <span>{{ds.auctionSettings.AuctionCurrency}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 inside-padding">
+          <input class="inputstyle" name="AuctionCurrency" #ccy>
+          <button class="btn btn-primary" 
+          [disabled]="ds.auctionStatus=='Started'"
+          (click)="updateSettingsString('AuctionCurrency', ccy)">
+            Update
+          </button>
+        </div>
+
+      </div>
+     <!-- <div class="row">
+        <div class="col-md-6 inside-padding">
+          <div class="row">
+            <div class="col">
+              <span>Auction Status</span>
+            </div>
+            <div class="col text-center">
+              <span>{{ds.auctionSettings.AuctionStatus}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 inside-padding">
+          <input class="inputstyle" name="AuctionStatus" #AuctionStatus>
+          <button class="btn btn-primary" (click)="updateSettingsString('AuctionStatus', AuctionStatus)">
+            Update
+          </button>
+        </div>
+
+      </div> -->
+      <div class="row">
+        <div class="col-md-6 inside-padding">
+          <div class="row">
+            <div class="col">
+              <span>Initial Amount PerTeam</span>
+            </div>
+            <div class="col text-center">
+              <span>{{ds.auctionSettings.InitialAmountPerTeam}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 inside-padding">
+          <input class="inputstyle text-center" name="InitialAmountPerTeam" #InitialAmountPerTeam>
+          <button class="btn btn-primary"  [disabled]="ds.auctionStatus=='Started'" (click)="updateSettingsNumber('InitialAmountPerTeam', InitialAmountPerTeam)">
+            Update
+          </button>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6 inside-padding">
+          <div class="row">
+            <div class="col">
+              <span>Minimum Bid Amount</span>
+            </div>
+            <div class="col text-center">
+              <span>{{ds.auctionSettings.MinimumBidAmount}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 inside-padding">
+          <input class="inputstyle text-center" name="MinimumBidAmount" #MinimumBidAmount>
+          <button class="btn btn-primary"  [disabled]="ds.auctionStatus=='Started'" (click)="updateSettingsNumber('MinimumBidAmount', MinimumBidAmount)">
+            Update
+          </button>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6 inside-padding">
+          <div class="row">
+            <div class="col">
+              <span>Number Of Players PerTeam</span>
+            </div>
+            <div class="col text-center">
+              <span>{{ds.auctionSettings.NumberOfPlayersPerTeam}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 inside-padding">
+          <input class="inputstyle text-center" name="NumberOfPlayersPerTeam" #NumberOfPlayersPerTeam>
+          <button class="btn btn-primary"  [disabled]="ds.auctionStatus=='Started'" (click)="updateSettingsNumber('NumberOfPlayersPerTeam', NumberOfPlayersPerTeam)">
+            Update
+          </button>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 inside-padding">
+          <div class="row">
+            <div class="col">
+              <span>Per TeamSafety BidAmount Multiplier</span>
+            </div>
+            <div class="col text-center">
+              <span>{{ds.auctionSettings.PerTeamSafetyBidAmountMultiplier}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 inside-padding">
+          <input class="inputstyle text-center" name="PerTeamSafetyBidAmountMultiplier" #PerTeamSafetyBidAmountMultiplier>
+          <button class="btn btn-primary"  [disabled]="ds.auctionStatus=='Started'" (click)="updateSettingsNumber('PerTeamSafetyBidAmountMultiplier', PerTeamSafetyBidAmountMultiplier)">
+            Update
+          </button>
+        </div>
+      </div>
+      <div class="row reset-btn">
+           <div class="col-md-8"> <p class="reset-text">Reset all <b>players</b> and <b>Teams</b></p>
+            <p>Please Refresh Page After Reset</p>
+           
+          </div>
+             
+          <div class="col-md-4 text-center"><button class="btn btn-danger tex-center" type="button"   (click)="resetTeams()">Reset All Teams
+          </button></div>
+          
+        </div>
+        
+        <div class="row reset-btn" *ngIf="ds.auctionStatus!='Started'">
+            <div class="col-md-8"> <p class="reset-text">Change Auction Status to Started:Once Auction is Started 
+              You Can't Add Delete Players and Teams,You Can't Update Aution Settings  and Started
+            </p>
+            
+           </div>
+              
+           <div class="col-md-4 text-center"><button class="btn btn-danger tex-center"
+             type="button"   (click)="startAuction()">Start Auction
+           </button></div>
+          </div>
+        
+        <div class="row reset-btn" *ngIf="ds.auctionStatus=='Started'">
+          <div class="col-md-8"> <p class="reset-text">Stop Auction, you can edit auction settings, insert players, Teams            </p> 
+           </div>
+
+           <div class="col-md-4 text-center"><button class="btn btn-danger tex-center"
+            type="button"   (click)="stopAuctionAndRestart()">Stop Auction
+          </button></div>
+          
+         </div>
+    </div>
+  </div>
+  <!-- <div class="col-md-4">
+      <div> -->
+
+  <!-- <input class = "btn btn-primary " type="button" value="Reset All Players" (click)="resetPlayers()"> -->
+  <!-- <button onclick="JSalert()">Show an Alert</button> -->
+
+  <!-- </div>
+
+    </div> -->
+
+
+</div>
