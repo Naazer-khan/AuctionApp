@@ -22,11 +22,11 @@ export class AuthenticationComponent implements OnInit {
    }
    sigup(){
      console.log("hasssaa");
-//    this.isShowHide = false;
+     this.isShowHide = false;
    }
 
    login(){
-//    this.isShowHide = true;
+    this.isShowHide = true;
    }
   //  admin(){
 

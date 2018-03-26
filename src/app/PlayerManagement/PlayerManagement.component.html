@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-      <h4>Player Register</h4>
+      <h4>Add/Delete Player</h4>
       <form #playerForm="ngForm" (ngSubmit)="onSubmit(playerForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="this.ds.selectedPlayer.$key">
         <div class="form-group">
@@ -52,6 +52,9 @@
           <button class="btn btn-default" type="submit" [disabled]="!(ds.isAdmin && playerForm.valid)">
             <i class="fa fa-floppy-o"></i>
             Submit</button>
+            <button class="btn btn-default" *ngIf="cancel == true" (click)="resetForm(playerForm)" type="submit">
+              <i class="fa fa-ban"></i>
+              Cancel</button>
         </div>
       </form>
     </div>

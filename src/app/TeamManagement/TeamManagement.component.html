@@ -2,22 +2,25 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h2>Team Register</h2>
+      <h2>Add/Delete Team</h2>
       <form #teamForm="ngForm" (ngSubmit)="createTeam(teamForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="dataService.selectedTeam.$key">
 
         <div class="form-group">
           <label>Name</label>
-          <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="dataService.selectedTeam.name" />
+          <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="dataService.selectedTeam.name" required/>
         </div>
         <div class="form-group">
           <label>Team Image Url</label>
           <input type="text" class="form-control" name="imageUrl" #name="ngModel" [(ngModel)]="dataService.selectedTeam.imageUrl" />
         </div>
         <div class="form-group">
-          <button class="btn btn-default" [disabled] = "!dataService.isAdmin" type="submit">
+          <button class="btn btn-default" [disabled] = "!(teamForm.valid && dataService.isAdmin)" type="submit">
             <i class="fa fa-floppy-o"></i>
             Submit</button>
+            <button class="btn btn-default" *ngIf="cancel == true" (click)="resetForm(teamForm)" type="submit">
+              <i class="fa fa-ban"></i>
+              Cancel</button>
         </div>
 
       </form>

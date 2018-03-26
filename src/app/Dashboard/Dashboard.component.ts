@@ -17,6 +17,7 @@ import { BookKeeping } from '../model/bookKeeping';
   styleUrls: ['./Dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  
   hide: boolean = true;
   // RemainingPlayersComponentRef:RemainingPlayersComponent;
   basePrice: number = 200;
@@ -28,10 +29,11 @@ export class DashboardComponent implements OnInit {
   biddingAmount: number = 400;
   //teams = [];
   // @Output() messageEvent = new EventEmitter<string>();
-  selectedTeam: { [key: string]: any } = {
-    value: null,
-    description: null
-  };
+  selectedTeam: any;
+  //  { [key: string]: any } = {
+  //   value: null,
+  //   description: null
+  // };
 
   //  allCandidates: Player[];
 
@@ -46,9 +48,10 @@ export class DashboardComponent implements OnInit {
         this.currentPlayer = this.ds.unsoldPlayerList[this.index];
 
         //var j = Math.floor(Math.random()  this.ds.unsoldPlayerList[]);
-        // var randomindex = this.getRandomInt(0,this.ds.unsoldPlayerList.length - 1);
+         var randomindex = this.getRandomInt(0,this.ds.unsoldPlayerList.length - 1);
+         //this.currentPlayer = randomindex;
 
-        // this.currentPlayer = this.ds.unsoldPlayerList[this.index];
+         this.currentPlayer = this.ds.unsoldPlayerList[randomindex];
         
         
         
@@ -75,6 +78,7 @@ export class DashboardComponent implements OnInit {
       //this.ds.updateIP(ClientIP);
 
     if (this.ds.currentUser == "none") {
+      
       //this.router.navigate(["/signup-login"]);
     }
     //this.router.navigate(["/teams"]);
@@ -119,13 +123,13 @@ export class DashboardComponent implements OnInit {
 
   performTransaction(biddingAmount: number) {
     
-    if(this.selectedTeam.tid == undefined) {
+    if(this.selectedTeam == undefined || this.selectedTeam.tid == undefined) {
       this.msg = new Message();
       this.msg.type = "warning";
       this.msg.message = "Please select team";
       return;
     }
-    if(this.currentPlayer == undefined)
+    if(this.currentPlayer == undefined || this.currentPlayer.pid == undefined)
     return;
     console.log("current player : " + JSON.stringify(this.currentPlayer) );
     
@@ -193,7 +197,7 @@ export class DashboardComponent implements OnInit {
     this.msg.type = "info";
     this.msg.message =
       this.ds.getPlayerNameFromId(this.currentPlayer.pid)
-      + " sold att " + biddingAmount
+      + " sold at " + biddingAmount
       + " to " + this.ds.getTeamNameFromId(this.selectedTeam.tid);
 
 
@@ -216,7 +220,8 @@ export class DashboardComponent implements OnInit {
 
       
     this.selectedTeam = Object.assign({}, this.selectedTeam, {});
-    this.selectedTeam.tid = undefined;
+    console.log('selected team id'+JSON.stringify(this.selectedTeam));
+    this.selectedTeam = undefined;
   }
 
 

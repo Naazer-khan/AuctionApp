@@ -16,9 +16,11 @@ import swal from 'sweetalert2';
 export class TeamManagementComponent implements OnInit {
 
   newTeam: Team = new Team();
+  cancel: any;
   
   
   constructor(public dataService: DataService) {
+     this.cancel = false
     //this.dataService.updateIP(ClientIP);
    }
 
@@ -29,6 +31,7 @@ export class TeamManagementComponent implements OnInit {
   onEdit(tm: Team) {
     console.log("on update team object is " + JSON.stringify(tm));
     this.dataService.selectedTeam = Object.assign({}, tm);
+    this.cancel = true; 
   }
 
   onDelete(key: string) {
@@ -76,5 +79,11 @@ export class TeamManagementComponent implements OnInit {
 
     }
     form.reset();
+  }
+  resetForm(form: NgForm){
+
+    console.log("sjdhfskdj");
+    form.reset();
+    this.cancel = false;
   }
 }

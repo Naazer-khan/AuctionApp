@@ -17,7 +17,9 @@ export class PlayerManagementComponent implements OnInit {
   // list: any[] = ['Batsman','Bowler','All Rounder','Wicket Keeper'];
   // role = 0;
   p: any;
+  cancel:any
   constructor(public ds: DataService) { 
+    this.cancel= false
     //this.ds.updateIP(ClientIP);
   }
 
@@ -49,6 +51,11 @@ export class PlayerManagementComponent implements OnInit {
   onEdit(plyr: Player) {
     console.log("PLayerdta",plyr);
     this.ds.selectedPlayer = Object.assign({}, plyr);
+    this.cancel = true;
+  }
+  resetForm(playerForm: NgForm){
+    playerForm.reset()
+    this.cancel= false
   }
 
   onDelete(key: string) {

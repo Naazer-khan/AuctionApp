@@ -8,7 +8,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  title = 'Auction App';
+  title = 'Auction Management';
   constructor(public ds:DataService) {
     //this.ds.updateIP(ClientIP);
    }
