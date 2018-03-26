@@ -30,6 +30,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AppRoutingModule,
     TruncateModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    [SweetAlert2Module.forRoot()],
   ],
   providers: [CommunicationServiceService, DataService],//SweetAlertService
   bootstrap: [AppComponent]

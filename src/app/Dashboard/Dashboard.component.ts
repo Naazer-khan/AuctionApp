@@ -41,7 +41,17 @@ export class DashboardComponent implements OnInit {
     // var x2;// = this.ds.getCandidateRef(); 
     this.communicationService.currentPlayerToBidOn.subscribe(
       data => {
+
+
         this.currentPlayer = this.ds.unsoldPlayerList[this.index];
+
+        //var j = Math.floor(Math.random()  this.ds.unsoldPlayerList[]);
+        // var randomindex = this.getRandomInt(0,this.ds.unsoldPlayerList.length - 1);
+
+        // this.currentPlayer = this.ds.unsoldPlayerList[this.index];
+        
+        
+        
         this.playerAvailable = !this.currentPlayer.isSold;
         console.log("remaingin player update " + data);
         //this.dataService.getUnsoldPlayerFromDB();
@@ -54,6 +64,11 @@ export class DashboardComponent implements OnInit {
     this.communicationService.auctionStarted.subscribe(
       data => { this.displayMsg(); });
   }
+
+   getRandomInt(min, max) : number{
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
   constructor(public communicationService: CommunicationServiceService
     , public ds: DataService, private router: Router) {
@@ -178,7 +193,7 @@ export class DashboardComponent implements OnInit {
     this.msg.type = "info";
     this.msg.message =
       this.ds.getPlayerNameFromId(this.currentPlayer.pid)
-      + " sold at " + biddingAmount
+      + " sold att " + biddingAmount
       + " to " + this.ds.getTeamNameFromId(this.selectedTeam.tid);
 
 
@@ -193,7 +208,7 @@ export class DashboardComponent implements OnInit {
     this.ds.insertbookeeping(bookeeping);
     this.biddingAmount = 400;
     if (this.ds.unsoldPlayerList.length > 1) {
-      this.currentPlayer = this.ds.unsoldPlayerList[0];
+    //  this.currentPlayer = this.ds.unsoldPlayerList[0];
       // this.getNextCandidate(); 
     }
     else
@@ -201,6 +216,7 @@ export class DashboardComponent implements OnInit {
 
       
     this.selectedTeam = Object.assign({}, this.selectedTeam, {});
+    this.selectedTeam.tid = undefined;
   }
 
 

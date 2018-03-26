@@ -46,4 +46,7 @@ color: #27b2ba;
 .resetBtn {
   float: right;
 }
+.swal2-cancel btn btn-danger{
+  margin-right: 14px;
+}
 

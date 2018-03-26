@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms'
  
 import { DataService } from '../services/data.service';
 import { Player } from '../model/player';
+import swal from 'sweetalert2';
 
 //declare let ClientIP: any;
 
@@ -35,7 +36,7 @@ export class PlayerManagementComponent implements OnInit {
     if(playerForm.value.$key == null){
       console.log("update player form " + JSON.stringify(playerForm.value));
       this.ds.insertPlayer(playerForm.value);
-      console.log('Submitted Succcessfully');
+      console.log('Submitted Succcessfully', playerForm.value);
       playerForm.reset();
     }
     else{
@@ -51,10 +52,40 @@ export class PlayerManagementComponent implements OnInit {
   }
 
   onDelete(key: string) {
-    if (confirm('Are you sure to delete this record ?') == true) {
-      this.ds.deletePlayer(key);
-      // this.tostr.warning("Deleted Successfully", "Employee register");
-    }
+    swal({
+      title: 'Are you sure?',
+       text: "You won't be able to revert this!",
+       type: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Yes, Delete it!'
+      //buttonsStyling: false,
+      //reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.ds.deletePlayer(key);
+        swal(
+          'Deleted!',
+          'Player Deleted.',
+          'success'
+        )
+      }else if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.cancel
+      )  {
+        // swal(
+        //   'Cancelled',
+        //   // 'You imaginary file is safe :)',
+        //   // 'error'
+        // )
+      }
+    })
+   
+    // if (confirm('Are you sure to delete this record ?') == true) {
+    //   this.ds.deletePlayer(key);
+    //   // this.tostr.warning("Deleted Successfully", "Employee register");
+    // }
   }
 
 }

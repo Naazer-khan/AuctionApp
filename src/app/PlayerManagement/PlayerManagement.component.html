@@ -34,7 +34,7 @@
           <select class="select-options" name="role" #name="ngModel" 
               [(ngModel)]="ds.selectedPlayer.role" placeholder="Bowling Style">
             <!-- <option value="" disabled selected>Please Choose...</option> -->
-            <option [ngValue]="ds.selectedPlayer.role"  value="batman">Batsman</option>
+            <option value="batman">Batsman</option>
             <option value="bowler">Bowler</option>
             <option value="allrounder">All Rounder</option>
             <option value="wicketkeeper">Wicket Keeper</option>
@@ -64,8 +64,8 @@
           <tr class="table-dark">
             <th>Id</th>
           <th>Name</th>
-          <th>Runs</th>
-          <th>Wickets</th>
+          <th>Role</th>
+          <!--   -->
           <th>Update</th>
           <th>Delete</th>
           </tr>
@@ -75,8 +75,8 @@
         <tr *ngFor="let player of this.ds.playerList  | paginate: { itemsPerPage: 10, currentPage: p }">
           <td>{{player.pid}}</td>
           <td>{{player.name}}</td>
-          <td>{{player.run}}</td>
-          <td>{{player.wicket}}</td>
+          <td>{{player.role | titlecase}}</td>
+          <!-- <td>{{player.wicket}}</td> -->
           <td>
             <a class="btn" (click)="onEdit(player)">
               <i class="fa fa-pencil-square-o"></i>
