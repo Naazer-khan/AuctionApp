@@ -6,4 +6,5 @@ export class AuctionSettings{
     MinimumBidAmount: number;
     NumberOfPlayersPerTeam: number;
     PerTeamSafetyBidAmountMultiplier: number;
+    last_modified_time?: string;
 }

@@ -8,6 +8,7 @@ export class BookKeeping {
     time: string;
     $key : string;
     deleted?: boolean;
+    deletionTime?: string;
     static getNextId(): any {
         return this.counter++;    
     }

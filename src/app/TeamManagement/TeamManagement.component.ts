@@ -81,8 +81,6 @@ export class TeamManagementComponent implements OnInit {
     form.reset();
   }
   resetForm(form: NgForm){
-
-    console.log("sjdhfskdj");
     form.reset();
     this.cancel = false;
   }

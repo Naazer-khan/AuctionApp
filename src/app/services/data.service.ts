@@ -6,21 +6,14 @@ import { Player } from '../model/player';
 import { BookKeeping } from '../model/bookKeeping';
 import { Client } from '../model/clients';
 import { AuctionSettings } from '../model/auctionSetting';
-
 import { CommunicationServiceService } from './communication-service.service';
-
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class DataService {
 
-  getMinimumBidAmount(): any {
-    console.log("minimum bid amount " + JSON.stringify(this.auctionSettings)+ ", "+  this.auctionSettings["MinimumBidAmount"]);
-    return this.auctionSettings["MinimumBidAmount"];
-  }
   privateIp: any;
   auctionStatus: string;
-  // auctionSettingsEditable: AuctionSettings;
   currentUser: string = "none";
   
   bookRef: AngularFireList<{}>;
@@ -46,30 +39,11 @@ export class DataService {
   unsoldPlayerList: Player[];
   bookList: BookKeeping[];
 
-
   // temporary variables
   resetplayers: any;
   resetteamdata: any;
   deleteBookLIst: any;
   clients: Client[];
-
-  evaluateAdminPermission0() {
-    // this.fb.list(this.getBaseDBName + "/AuctionSettings/AdminIP").take(1);  //'/teams/' , { preserveSnapshot: true }).take(1);
-    console.log("evaluateAdminPermission");
-    this.fb.database.ref(this.getBaseDBName() + '/AuctionSettings/AdminIP').once('value').then(
-      (snapshot) => {
-        snapshot.forEach(element => {
-          var z = element.toJSON();
-          // [element.key] = z;
-          console.log("individual evaluateAdminPermission  " + JSON.stringify(z) + " " + element.key);
-          
-        });
-      });
-  }
-
-  getBookRef() {
-    return this.bookRef;
-  }
 
   initializeDatabaseNodeReferences() {
     let baseDbName = this.getBaseDBName();
@@ -82,7 +56,7 @@ export class DataService {
   constructor(public fb: AngularFireDatabase
     , private commService: CommunicationServiceService) {
     
-      this.initializeDatabaseNodeReferences();
+    this.initializeDatabaseNodeReferences();
 
     this.teamRef.snapshotChanges().subscribe(item => {
       this.teamList = [];
@@ -100,8 +74,7 @@ export class DataService {
     });
 
     this.setListnerOnAuctionSettings();
-    // this.auctionSettings = this.getAuctionSettings();
-    
+
     this.playerRef.snapshotChanges().subscribe(item => {
       this.playerList = [];
       this.unsoldPlayerList = [];
@@ -128,7 +101,6 @@ export class DataService {
       this.commService.setMessageToAllplayersLoaded();
     });
 
-    // var b = this.getBookRef();
     this.bookRef.snapshotChanges().subscribe(item => {
       this.bookList = [];
       item.forEach(element => {
@@ -142,19 +114,7 @@ export class DataService {
       console.log("length of bookkeeping list:", this.bookList.length);
     });
 
-    // var bk = this.fb.list(this.clientName + '/BooKeeping');
-    // bk.snapshotChanges().subscribe(item => {
-    //   BookKeeping.counter = item.length;
-    // });
-    // this.getBookRef()
-
   }
-
-
-
-
-
-
 
 
   /*
@@ -171,7 +131,7 @@ export class DataService {
         y["$key"] = element.key;
         this.clients.push(y as Client);
       });
-      console.log("individual client is  : " + JSON.stringify(this.clients));
+      // console.log("individual client is  : " + JSON.stringify(this.clients));
       //this.commService.setMessageToCurrentClinet()
     });
     return this.clientRef;
@@ -279,7 +239,6 @@ export class DataService {
   deletePlayer($key: string) {
     this.playerRef.remove($key);
   }
-
 
 
   /* 
@@ -403,10 +362,36 @@ export class DataService {
     });
     this.auctionSettings = auctionSettingsLocal;
   }
+ 
+  pingIP(): any {
+    // throw new Error("Method not implemented.");
+  }
+  
+  getMinimumBidAmount(): any {
+    // console.log("minimum bid amount " + JSON.stringify(this.auctionSettings)+ ", "+  this.auctionSettings["MinimumBidAmount"]);
+    return this.auctionSettings["MinimumBidAmount"];
+  }
+  
+  evaluateAdminPermission0() {
+    // this.fb.list(this.getBaseDBName + "/AuctionSettings/AdminIP").take(1);  //'/teams/' , { preserveSnapshot: true }).take(1);
+    console.log("evaluateAdminPermission");
+    this.fb.database.ref(this.getBaseDBName() + '/AuctionSettings/AdminIP').once('value').then(
+      (snapshot) => {
+        snapshot.forEach(element => {
+          var z = element.toJSON();
+          // [element.key] = z;
+          console.log("individual evaluateAdminPermission  " + JSON.stringify(z) + " " + element.key);
+          
+        });
+      });
+  }
 
 
   /**
    * Helper Methods
+   {
+      "234" : {Player object}
+   }
    */
 
   getPlayerNameFromId(id: any): any {
@@ -416,6 +401,7 @@ export class DataService {
       }
     }
   }
+
   getPlayerObjectFromId(id: any): any {
     for (var p in this.playerList) {
       if (this.playerList[p].pid == id) {
@@ -431,6 +417,7 @@ export class DataService {
       }
     }
   }
+  
   getTeamObjectFromId(id: any): any {
     for (var p in this.teamList) {
       if (this.teamList[p].tid == id) {
@@ -443,27 +430,23 @@ export class DataService {
     this.isAuctionComplete = true;
   }
 
-  // auctionDatainsert(settingsKey, updated){
-  //   this.fb.object("/AuctionSettings/" + settingsKey).set(updated.value);
-  // }
-
   updateIP(ip: any): any {
     console.log("Updating IP in db , ip" + ip);
     this.privateIp = ip;
-    this.updateKeyValueInAuctionSettings("/AuctionSettings/AdminIP", ip);  
+    this.updateKeyValueInDB("/AuctionSettings/AdminIP", ip);  
   }
 
-  updateKeyValueInAuctionSettings(key: any, value: any): any {
+  updateKeyValueInDB(key: any, value: any): any {
     console.log("Updating AuctionSettings " + key + ", value: " + value);
     this.fb.object(this.getBaseDBName() + key).set(value);
   }
+
   getBaseDBName(): string {
     return environment.baseDBName;
   }
 
-
   updateAuctionStatus(value): any {
-    this.updateKeyValueInAuctionSettings("/AuctionSettings/AuctionStatus", value);
+    this.updateKeyValueInDB("/AuctionSettings/AuctionStatus", value);
     this.auctionStatus = value;
   }
 

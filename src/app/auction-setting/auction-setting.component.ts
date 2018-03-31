@@ -5,11 +5,7 @@ import { NgForm } from '@angular/forms';
 import { AuctionSettings } from '../model/auctionSetting';
 import { HeaderComponent } from '../header/header.component';
 import swal from 'sweetalert2';
-//import { SweetAlertService } from 'angular-sweetalert-service/js';
 
-//declare let ClientIP: any;
-
-//import { SweetAlertService } from 'angular-sweetalert';
 @Component({
   selector: 'app-auction-setting',
   templateUrl: './auction-setting.component.html',
@@ -22,10 +18,9 @@ export class AuctionSettingComponent implements OnInit {
   settingValueNum: number;
   SweetAlert: any;
 
-  constructor(public ds: DataService) {
-
-    
+  constructor(public ds: DataService) {  
     //this.ds.updateIP(ClientIP);
+    this.ds.pingIP();
     }
   ngOnInit() {  }
 
@@ -36,26 +31,16 @@ export class AuctionSettingComponent implements OnInit {
 
   updateSettingsString(settingsKey, updated) {
     console.log(settingsKey + " : " + updated.value);
-    //this.ds.fb.object("/AuctionSettings/" + settingsKey).set(updated.value);
-    this.ds.updateKeyValueInAuctionSettings("/AuctionSettings/" + settingsKey, updated.value);
+    this.ds.updateKeyValueInDB("/AuctionSettings/" + settingsKey, updated.value);
     updated.value = '';
   }
 
   updateSettingsNumber(settingsKey, updated) {
     var updatedValueNum = parseInt(updated.value);
     console.log(settingsKey + " : " + updatedValueNum);
-    this.ds.updateKeyValueInAuctionSettings("/AuctionSettings/" + settingsKey, updatedValueNum);
+    this.ds.updateKeyValueInDB("/AuctionSettings/" + settingsKey, updatedValueNum);
     updated.value = '';
   }
-
-  // resetTeams() {
-  //   if (confirm('Are you sure to reset this record ?') == true) {
-  //     this.ds.updateKeyValueInAuctionSettings("/AuctionSettings/AuctionStatus", "NotStarted");
-  //     this.ds.resetTeam(this.ds.teamList);
-  //     this.ds.resetPlayer(this.ds.playerList);
-  //     this.ds.deleteBookkeeping(this.ds.bookList);
-  //   }
-  // }
 
   startAuction() {
     this.ds.updateAuctionStatus("Started");
@@ -78,13 +63,13 @@ export class AuctionSettingComponent implements OnInit {
       //reverseButtons: true
     }).then((result) => {
       if (result.value) {
-        this.ds.updateKeyValueInAuctionSettings("/AuctionSettings/AuctionStatus", "NotStarted");
-      this.ds.resetTeam(this.ds.teamList);
-      this.ds.resetPlayer(this.ds.playerList);
-      this.ds.deleteBookkeeping(this.ds.bookList);
+        this.ds.updateKeyValueInDB("/AuctionSettings/AuctionStatus", "NotStarted");
+        this.ds.resetTeam(this.ds.teamList);
+        this.ds.resetPlayer(this.ds.playerList);
+        this.ds.deleteBookkeeping(this.ds.bookList);
         swal(
           'Reset!',
-          'Players and Teams Reset Successfully.',
+          'Players and Teams Reset Successful.',
           'success'
         )
       } else if (

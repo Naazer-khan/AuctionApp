@@ -1,0 +1,322 @@
+
+ .wrap{
+     height: 100%;
+ }
+
+.body {
+    width:100%;
+    height:100%;
+    min-height:100%;
+    background-color:#990000;
+    padding:10px;
+    color:#efefef;
+
+    font: 400 1em/1.5 "Neuton";
+   color: rgba(255, 255, 255, 0.25);
+    /* background: url(b15.jpg);*/
+    margin: 0;
+    /* min-height: 711px; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: initial;
+    animation-iteration-count: infinite; 
+    animation-name: colorchange;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; 
+}
+
+
+@keyframes colorchange {
+    0% {
+        background: #0a93c9;
+    }
+    25% {
+        background: #3b7dcc;
+    }
+    50% {
+        background: #00afb2;
+    }
+    75% {
+        background: #0ac898;
+    }
+    100% {
+        background: #0bbf5e;
+    }
+}
+
+
+
+@-webkit-keyframes colorchange
+
+ /* Safari and Chrome - necessary duplicate  */
+    {
+    0% {
+        background: rosybrown;
+    }
+    25% {
+        background: blueviolet;
+    }
+    50% {
+        background: chocolate;
+    }
+    75% {
+        background: darkgoldenrod;
+    }
+    100% {
+        background: green;
+    }
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.page_wrap {
+    /* width: 600px; */
+    /* margin: 0px auto; */
+    text-align: center;
+    /* height: -webkit-fill-available; */
+}
+
+.title {
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    display: inline-block;
+    /* border: 4px double; */
+    border-width: 4px 0;
+    padding: 1.5em 0em;
+    width: 37em;
+    width: 100%;
+    color: wheat;
+    margin-top: 100px;
+}
+
+.title span {
+    font: 700 2.5em "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: .25em 0 .325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+    background: url(/assets/images/gr.png);
+    -webkit-background-clip: text;
+    
+    background-clip: text;
+    /* Animate Background Image */
+    
+    animation: aitf 80s linear infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+    /* Activate hardware acceleration for smoother animations */
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}
+
+/* Animate Background Image */
+@keyframes aitf {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+@-webkit-keyframes aitf {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+
+
+/*===============================================================================================*/
+
+.button span {
+    color: #fff
+}
+
+.button {
+ 
+    display: inline-block;
+    width: 15em;
+    padding: 10px;
+    text-align: center;
+    background:#2e00ff;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #888;
+    margin-top: 24px;
+    /* position: absolute;
+    top: 58%;
+    left: 39%; */
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+#upper_left {
+    position: absolute;
+    background: url(/assets/images/f2.png) no-repeat;
+    height: 600px;
+    width: 634px;
+    top: 0;
+    left: -144px;
+    /* z-index: -10; */
+}
+
+#upper_right {
+    position: absolute;
+    background: url(/assets/images/b3.png) no-repeat;
+    height: 505px;
+    width: 627px;
+    top: 82px;
+    right: 12px;
+    /* z-index: -259; */
+}
+
+@keyframes pulse_animation {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.08);
+    }
+    50% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    80% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation-name: pulse_animation;
+    animation-duration: 3000ms;
+    transform-origin: 70% 70%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+
+
+.light {
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    color: #ffffff;
+    font-family: Iceland;
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+
+
+
+@-webkit-keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+}
+
+@-moz-keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+}
+
+@keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+}
+
+/*===============================================================================================*/
+
+@media screen and (min-width:320px) and (max-width:359px) {
+
+    #upper_right {
+        display: none;
+    }
+    #upper_left {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:360px) {
+
+    #upper_right {
+        display: none;
+    }
+    #upper_left {
+        top: 445px;
+    }
+
+}
+
+@media only screen and (min-width: 360px) and (max-width: 767px) {
+    .title {
+        width: 21em;
+    }
+    #upper_right {
+        display: none;
+    }
+    #upper_left {
+        display: none;
+    }
+}
+
+@media only screen and (width: 768px) {
+    .title {
+        width: 23em;
+    }
+    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #upper_right {
+        top: 311px;
+    }
+    #upper_left {
+        top: 400px;
+    }
+
+}
+@media screen and (max-width:900px) and (min-width:1200px) {
+.body{
+    min-height: 800px;
+}
+}

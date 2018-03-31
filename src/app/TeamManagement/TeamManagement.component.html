@@ -1,8 +1,12 @@
 <app-header></app-header>
-<div class="container">
-  <div class="row">
+<div class="container"> <h4 style="border-bottom: 1px solid;display: table;margin: 0 auto;">Please Add Teams & Players After Auction Settings update</h4>
+  
+  <div class="row" style="margin-top:2rem">
+    
     <div class="col-md-6">
-      <h2>Add/Delete Team</h2>
+      <h5 class="text-center">Add/Edit Team</h5>
+      <br>
+
       <form #teamForm="ngForm" (ngSubmit)="createTeam(teamForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="dataService.selectedTeam.$key">
 
@@ -15,18 +19,20 @@
           <input type="text" class="form-control" name="imageUrl" #name="ngModel" [(ngModel)]="dataService.selectedTeam.imageUrl" />
         </div>
         <div class="form-group">
-          <button class="btn btn-default" [disabled] = "!(teamForm.valid && dataService.isAdmin)" type="submit">
+          <button class="btn btn-default selectBtn" [disabled] = "!(teamForm.valid && dataService.isAdmin)" type="submit">
             <i class="fa fa-floppy-o"></i>
             Submit</button>
-            <button class="btn btn-default" *ngIf="cancel == true" (click)="resetForm(teamForm)" type="submit">
+            <button class="btn btn-default selectBtn" *ngIf="cancel == true" (click)="resetForm(teamForm)" type="submit">
               <i class="fa fa-ban"></i>
               Cancel</button>
         </div>
 
       </form>
     </div>
+
     <div class="col-md-6">
-      <h3>Team List</h3>
+      <h5 class="text-center">Team List</h5>
+      <br>
       <table class="table table-sm table-hover table-bordered">
         <thead>
           <tr class="table-dark">
@@ -57,6 +63,7 @@
         </tr>
       </table>
     </div>
+  
   </div>
 
 </div>

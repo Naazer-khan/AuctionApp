@@ -17,8 +17,8 @@ export class AdminLoginComponent implements OnInit {
   ) {
 
     this.ds.updateIP(ClientIP);
-    this.ds.isAdmin = true;  
-    // this.ds.evaluateAdminPermission();
+    this.ds.pingIP();
+    this.ds.isAdmin = true;
     this.router.navigate(["/dashboard"]);
   }
 

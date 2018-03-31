@@ -7,13 +7,13 @@
 
 <div class="container-fluid">
   <div class="row  ">
-    <div class=" col-md-6 row-margin">
-      <div class="row" *ngIf="hide">
-        <div class="col-md-2"></div>
-        <div class=" col-md-8  ">
+    <div class=" col-md-6 ">
+      <div class="row justify-content-md-center" *ngIf="hide">
+        <!-- <div class="col-md-2"></div> -->
+        <div class=" col-md-10 ">
           <div class="formCard equal">
             <div class="playerInfo">
-              <div class="pname text-center">{{currentPlayer.name}}</div>
+              <div class="pname text-center pulse">{{currentPlayer.name | uppercase}}</div>
               <!-- <div class="row align-items-center">
                 <div class="col-lg-4" style="padding-right:0">
                   <img src="{{currentPlayer.imageUrl}}" class="rounded m-auto d-block" alt="">
@@ -55,21 +55,22 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2"></div>
+         
       </div>
 
-      <div class="row" *ngIf="hide">
-        <div class="col-md-2"></div>
-        <div class=" col-md-8 col-btn">
+      <div class="row justify-content-md-center" *ngIf="hide">
+        <!-- <div class="col-md-2"></div> -->
+        <div class=" col-md-10 col-btn">
           <div class="bidding equal" >
             <div class="bidding-form" >
               <label for="" class="biddin-amount text-center">Bidding Amount </label>
               <input [disabled]="!(ds.auctionStatus =='Started' &&  ds.isAdmin)" [(ngModel)]="biddingAmount" id="teamName">
               <br>
-              <div class="row text-center ">
+              <div class="row row-margin text-center" >
                 <div *ngFor="let team of ds.teamList; let idx = index" class="col-sm-6 radio-one">
                   <input id="team-{{idx}}" [disabled]="!(ds.auctionStatus =='Started' &&  ds.isAdmin)" type="radio" name="radiogroup" (change)="onSelectionChange(team)" [value]="team.id">
-                  <label for="team-{{idx}}">&emsp;&emsp;{{team.name}} [{{team.nextBidMaxAmount}}]</label>
+                  <label for="team-{{idx}}">&emsp;&emsp;{{team.name}} </label>
+                  <label for="team-{{idx}}" class="nextbidamt">NextBid Max Amount: {{team.nextBidMaxAmount}} </label>
                 </div>
               </div>
 
@@ -87,15 +88,22 @@
           </div>
 
         </div>
-        <div class="col-md-2"></div>
+        <!-- <div class="col-md-2"></div> -->
       </div>
 
-      <div class="row" *ngIf="!hide">
-        <p>All stats.</p>
+      <div class="row statsCol" *ngIf="!hide">
+       <div>Highest Bid Player is {{highestBidPlayer.name}}</div>
+       <div>Sold At Amount  {{highestBidPlayer.biddingAmount}} {{ds.auctionSettings.AuctionCurrency}} </div>
       </div>
     </div>
 
     <div class=" col-md-6  ">
+    
+      <!-- quick display of stats 
+        <div class="row statsCol">
+        <div>Highest Bid Player is {{highestBidPlayer.name}} - </div>
+        <div>Sold At Amount  {{highestBidPlayer.biddingAmount}} {{ds.auctionSettings.AuctionCurrency}} </div>
+       </div> -->
 
       <div class="row">
         <div class="col-lg-6" *ngFor="let team of ds.teamList;">
@@ -120,11 +128,11 @@
                       <td> {{team.remainingAmount}}</td>
                     </tr>
                     <tr>
-                      <td scope="row">Res Amt</td>
+                      <td scope="row">Reserved Amt</td>
                       <td> {{team.reservedAmount}}</td>
                     </tr>
                     <tr>
-                      <td scope="row">NextBid Amt</td>
+                      <td scope="row">NextBid Max Amt</td>
                       <td> {{team.nextBidMaxAmount}}</td>
                     </tr>
                   </tbody>
@@ -135,7 +143,7 @@
 
             <div>
               <div class="playerBought">Number Of Players Bought
-                <span>{{team.numberOfPlayersBought}}</span>
+                <span>[ {{team.numberOfPlayersBought}} ]</span>
               </div>
 
             </div>

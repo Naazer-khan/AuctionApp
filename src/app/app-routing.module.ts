@@ -14,16 +14,16 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'player-management', component: PlayerManagementComponent },
-  { path: 'team-management', component: TeamManagementComponent},
-  { path: 'teams', component: TeamsComponent},
-  { path: 'signup-login', component: AuthenticationComponent},
-  {path: 'settings', component: AuctionSettingComponent},
-  {path: 'transactions', component: TransactionsComponent},
-  {path: 'home', component: HomeComponent},
-  {path:'adminLogin', component: AdminLoginComponent}
+  { path: 'team-management', component: TeamManagementComponent },
+  { path: 'teams', component: TeamsComponent },
+  { path: 'signup-login', component: AuthenticationComponent },
+  { path: 'settings', component: AuctionSettingComponent },
+  { path: 'transactions', component: TransactionsComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'adminLogin', component: AdminLoginComponent }
 ];
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ] 
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

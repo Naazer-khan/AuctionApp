@@ -2,7 +2,7 @@
 .select-options{
     display: block;
 width: 100%;
-padding: .375rem .75rem;
+padding: .2rem .75rem;
 font-size: 1rem;
 line-height: 1.5;
 color: #495057;
@@ -12,10 +12,10 @@ border: 1px solid #ced4da;
 border-radius: .25rem;
 transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 box-shadow: 1px 0px 5px -2px;
-    border: 1px solid #00ddd2;
+    border: 1px solid #0288D1;
 }
 .select-options:focus{
-    border: 1px solid #00ddd2;
+    border: 1px solid #0288D1;
     box-shadow:0 0 0 .2rem rgb(190, 238, 244);
 }
 
@@ -24,18 +24,18 @@ box-shadow: 1px 0px 5px -2px;
     }
 .form-control{
     box-shadow: 1px 0px 5px -2px;
-    border: 1px solid #00ddd2;
+    border: 1px solid #0288D1;
 }
 .form-control:focus{
-    border: 1px solid #00ddd2;
+    border: 1px solid #0288D1;
     box-shadow: 0 0 0 .2rem rgb(190, 238, 244);
 }
 
 .table-dark, .table-dark > td, .table-dark > th{
-    background-color: #21d0ac;
+    background-color: #0288D1;
 }
 .table-bordered td, .table-bordered th{
-    border: 1px solid #12ddbe;
+    border: 1px solid #0288D1;
 }
 .table-bordered th{
     text-align: center;
@@ -54,5 +54,17 @@ thead{
     box-shadow: -1px 1px 7px 0px;
 }
 pagination-controls{
-    background: #21d0ac !important;
+    background: #0288D1 !important;
 }
+
+td .btn{
+    background: transparent;
+}
+.selectBtn:hover{
+    color: #fff;
+    /* background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%); */
+    background:#03A9F4; 
+    border-color: #03A9F4;
+
+}
+ 

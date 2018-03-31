@@ -1,5 +1,6 @@
 .heading-team{
-    background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+    /* background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%); */
+    background: #0288D1;
     margin-bottom: 0    px;
     padding: 1px;
     font-size: 2rem;
@@ -22,5 +23,5 @@
 }
 
 .table-bordered td, .table-bordered th{
-    border: 1px solid  #26bbb6;
+    border: 1px solid  #0288D1;
 }

@@ -1,14 +1,14 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row">
-    <div class="col-md-7">
-      <h4>Add/Delete Player</h4>
+  <h4 class="text-center" style="border-bottom: 1px solid;display: table;margin: 0 auto;">Please Add Teams & Players After Auction Settings update</h4>
+  <div class="row" style="margin-top:2rem">
+    <div class="col-md-6">
+      <h5 class="text-center">Add/Edit Player</h5>  <br>
       <form #playerForm="ngForm" (ngSubmit)="onSubmit(playerForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="this.ds.selectedPlayer.$key">
         <div class="form-group">
           <label>Name</label>
-          <input class="form-control" name="name" #name="ngModel" [(ngModel)]="this.ds.selectedPlayer.name" placeholder="Name"
-            required>
+          <input class="form-control" name="name" #name="ngModel" [(ngModel)]="this.ds.selectedPlayer.name" placeholder="Name" required>
           <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)"
       class="alert alert-danger"> -->
         </div>
@@ -31,8 +31,7 @@
         <div class="form-group">
           <label>Role</label>
           <!-- <input class="form-control" name="role" #name="ngModel" [(ngModel)]="ds.selectedPlayer.role" placeholder="Role" > -->
-          <select class="select-options" name="role" #name="ngModel" 
-              [(ngModel)]="ds.selectedPlayer.role" placeholder="Bowling Style">
+          <select class="select-options" name="role" #name="ngModel" [(ngModel)]="ds.selectedPlayer.role" placeholder="Bowling Style">
             <!-- <option value="" disabled selected>Please Choose...</option> -->
             <option value="batman">Batsman</option>
             <option value="bowler">Bowler</option>
@@ -49,30 +48,30 @@
           <input class="form-control" name="wicket" #name="ngModel" [(ngModel)]="ds.selectedPlayer.wicket" placeholder="Wickets">
         </div> -->
         <div class="form-group">
-          <button class="btn btn-default" type="submit" [disabled]="!(ds.isAdmin && playerForm.valid)">
+          <button class="btn btn-default selectBtn" type="submit" [disabled]="!(ds.isAdmin && playerForm.valid)">
             <i class="fa fa-floppy-o"></i>
             Submit</button>
-            <button class="btn btn-default" *ngIf="cancel == true" (click)="resetForm(playerForm)" type="submit">
-              <i class="fa fa-ban"></i>
-              Cancel</button>
+          <button class="btn btn-default selectBtn" *ngIf="cancel == true" (click)="resetForm(playerForm)" type="submit">
+            <i class="fa fa-ban"></i>
+            Cancel</button>
         </div>
       </form>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
 
-      <h4 class="text-center">Player Display</h4>
+      <h5 class="text-center">List of Player</h5>
       <br/>
       <table class="table table-sm table-hover table-bordered">
         <thead>
           <tr class="table-dark">
             <th>Id</th>
-          <th>Name</th>
-          <th>Role</th>
-          <!--   -->
-          <th>Update</th>
-          <th>Delete</th>
+            <th>Name</th>
+            <th>Role</th>
+            <!--   -->
+            <th>Update</th>
+            <th>Delete</th>
           </tr>
-          
+
 
         </thead>
         <tr *ngFor="let player of this.ds.playerList  | paginate: { itemsPerPage: 10, currentPage: p }">
@@ -86,15 +85,15 @@
             </a>
           </td>
           <td>
-            <button class="btn" [disabled] = "!ds.isAdmin" (click)="onDelete(player.$key)">
-            <!-- <a class="btn" [disabled] = "!ds.isAdmin" (click)="onDelete(player.$key)"></a> -->
+            <button class="btn" [disabled]="!ds.isAdmin" (click)="onDelete(player.$key)">
+              <!-- <a class="btn" [disabled] = "!ds.isAdmin" (click)="onDelete(player.$key)"></a> -->
               <i class="fa fa-trash-o"></i>
             </button>
-            
+
           </td>
         </tr>
       </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
 
 
     </div>

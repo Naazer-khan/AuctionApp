@@ -4,7 +4,7 @@
 } */
 
 .remaining-player {
-  border: 1px solid;
+  /* border: 1px solid;
   margin: 2px 6px;
   padding: 0em 0.3em;
   display: inline-block;
@@ -15,7 +15,23 @@
   height: 2rem;
   width: 13rem;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
+  /* dsfsd */
+  border: 1px solid;
+  margin: 2px 3px;
+  padding: 0em 0.3em;
+  display: inline-block;
+  background-size: cover;
+  /* -webkit-box-shadow: 0px 0px 2px 0px; */
+  box-shadow: 0px 0px 2px 0px;
+  font-weight: 300;
+  border-radius: 6%;
+  height: 2rem;
+  width: 8rem;
+  overflow: hidden;
+  text-overflow: clip; 
+  white-space: nowrap; 
+
 }
 
 /* .remaining-player {
@@ -35,12 +51,14 @@
   margin-bottom: 0px;
   color: black;
   font-size: 1.1rem;
-  padding: 0.3rem 1rem;
+  padding: 0rem 1.4rem;
   /* text-align: center; */
+  position: relative;
 }
 
 .player-remaining {
-  background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
+  /* background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%); */
+  background: #0288D1;
   margin-bottom: 15px;
   padding: 1px;
   font-size: 2rem;
@@ -58,17 +76,20 @@
 
 .re-back {
   padding: 5px;
-  color: #26bbb6;
+  color: #0288D1;
   /* box-shadow: inset 1px 0px 6px 2px; */
   box-shadow: 1px 0px 10px 0px;
 }
 
-.list-number {
-  padding: 0px 5px 1px 8px;
+.list-number {padding: 12px 6px 0px 6px;
   background: linear-gradient(141deg, #4136f4 6%, #1fdba7 66%);
   border-radius: 50%;
-  margin: 2px;
-  font-size: 0.9rem;
+  margin: 4px 5px;
+  font-size: 0.5rem;
+  border: 1px solid;
+  position: absolute;
+  top: 4px;
+  left: 0px;
 }
 
 /*animation====*/

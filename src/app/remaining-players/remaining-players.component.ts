@@ -9,9 +9,7 @@ import { DataService } from '../services/data.service';
 })
 export class RemainingPlayersComponent implements OnInit {
 
-  constructor(public dataService: DataService) {
-    //this.dataService.updateIP(ClientIP);
-   }
+  constructor(public dataService: DataService) {}
 
   ngOnInit() { }
 
